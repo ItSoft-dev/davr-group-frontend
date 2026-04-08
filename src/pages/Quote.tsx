@@ -4,8 +4,14 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Send, ArrowRight } from "lucide-react";
+import { Send, ArrowRight, CheckCircle2, Clock, Shield, Phone } from "lucide-react";
 import { toast } from "sonner";
+
+const benefits = [
+  { icon: Clock, text: "Response within 24 hours" },
+  { icon: Shield, text: "No obligation quote" },
+  { icon: Phone, text: "Personal follow-up call" },
+];
 
 const Quote = () => {
   const [loading, setLoading] = useState(false);
@@ -22,78 +28,202 @@ const Quote = () => {
 
   return (
     <div>
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-primary text-sm font-semibold uppercase tracking-wider mb-2">Free Quote</p>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">Get a Free Quote</h1>
-            <p className="text-muted-foreground text-lg">
-              Tell us about your shipment and we'll get back to you with a competitive rate.
+      {/* Hero */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="container mx-auto px-4 relative">
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+              Free Quote
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6">
+              Get a Free <span className="text-gradient">Quote</span>
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+              Tell us about your shipment and we'll get back to you with a competitive rate. No obligation, no hidden fees.
             </p>
           </div>
+        </div>
+      </section>
 
-          <form onSubmit={handleSubmit} className="max-w-2xl mx-auto space-y-6 p-6 md:p-10 rounded-xl border border-border bg-card">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <Label htmlFor="name">Full Name</Label>
-                <Input id="name" placeholder="John Doe" required className="mt-1.5" />
-              </div>
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="john@example.com" required className="mt-1.5" />
+      {/* Form Section */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
+            {/* Sidebar */}
+            <div className="lg:col-span-1 order-2 lg:order-1">
+              <div className="lg:sticky lg:top-32 space-y-6">
+                <div className="p-7 rounded-2xl border border-border/50 bg-card/30">
+                  <h3 className="font-bold text-lg mb-4">Why Request a Quote?</h3>
+                  <div className="space-y-4">
+                    {benefits.map((b) => (
+                      <div key={b.text} className="flex items-center gap-3">
+                        <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
+                          <b.icon className="h-4.5 w-4.5 text-primary" />
+                        </div>
+                        <span className="text-sm text-muted-foreground">{b.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-7 rounded-2xl border border-border/50 bg-gradient-to-br from-primary/5 via-card/30 to-secondary/5">
+                  <h3 className="font-bold text-lg mb-2">Prefer to call?</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Speak directly with our dispatch team for immediate assistance.
+                  </p>
+                  <a href="tel:+13145550123" className="flex items-center gap-2 text-primary font-semibold hover:underline">
+                    <Phone className="h-4 w-4" />
+                    (314) 555-0123
+                  </a>
+                </div>
+
+                <div className="p-7 rounded-2xl border border-border/50 bg-card/30">
+                  <h3 className="font-bold mb-3">What happens next?</h3>
+                  <div className="space-y-4">
+                    {[
+                      { step: "1", text: "Submit your shipment details" },
+                      { step: "2", text: "Our team reviews your request" },
+                      { step: "3", text: "Receive a competitive quote" },
+                      { step: "4", text: "Confirm and schedule pickup" },
+                    ].map((s) => (
+                      <div key={s.step} className="flex items-start gap-3">
+                        <div className="w-7 h-7 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center flex-shrink-0">
+                          <span className="text-xs font-bold text-primary">{s.step}</span>
+                        </div>
+                        <span className="text-sm text-muted-foreground pt-0.5">{s.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div>
-              <Label htmlFor="phone">Phone Number</Label>
-              <Input id="phone" type="tel" placeholder="(314) 555-0000" className="mt-1.5" />
+            {/* Form */}
+            <div className="lg:col-span-2 order-1 lg:order-2">
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-6 p-8 md:p-10 rounded-2xl border border-border/50 bg-card/30"
+              >
+                <div className="mb-2">
+                  <h3 className="text-2xl font-bold mb-2">Shipment Details</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Fill in the details below and we'll prepare your personalized quote.
+                  </p>
+                </div>
+
+                {/* Contact Info */}
+                <div className="space-y-1.5">
+                  <h4 className="text-sm font-semibold text-primary uppercase tracking-wider">Contact Information</h4>
+                  <div className="h-px bg-border/50" />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <Label htmlFor="name">Full Name *</Label>
+                    <Input id="name" placeholder="John Doe" required className="mt-1.5 bg-background/50" />
+                  </div>
+                  <div>
+                    <Label htmlFor="email">Email *</Label>
+                    <Input id="email" type="email" placeholder="john@example.com" required className="mt-1.5 bg-background/50" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <Label htmlFor="phone">Phone Number</Label>
+                    <Input id="phone" type="tel" placeholder="(314) 555-0000" className="mt-1.5 bg-background/50" />
+                  </div>
+                  <div>
+                    <Label htmlFor="company">Company Name</Label>
+                    <Input id="company" placeholder="Your Company" className="mt-1.5 bg-background/50" />
+                  </div>
+                </div>
+
+                {/* Shipment Info */}
+                <div className="space-y-1.5 pt-4">
+                  <h4 className="text-sm font-semibold text-primary uppercase tracking-wider">Shipment Information</h4>
+                  <div className="h-px bg-border/50" />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div>
+                    <Label htmlFor="pickup">Pickup Location *</Label>
+                    <Input id="pickup" placeholder="City, State" required className="mt-1.5 bg-background/50" />
+                  </div>
+                  <div>
+                    <Label htmlFor="delivery">Delivery Location *</Label>
+                    <Input id="delivery" placeholder="City, State" required className="mt-1.5 bg-background/50" />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  <div>
+                    <Label htmlFor="weight">Estimated Weight (lbs)</Label>
+                    <Input id="weight" type="number" placeholder="e.g. 10000" className="mt-1.5 bg-background/50" />
+                  </div>
+                  <div>
+                    <Label>Freight Type</Label>
+                    <Select>
+                      <SelectTrigger className="mt-1.5 bg-background/50">
+                        <SelectValue placeholder="Select type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="dry-van">Dry Van</SelectItem>
+                        <SelectItem value="flatbed">Flatbed</SelectItem>
+                        <SelectItem value="reefer">Reefer</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <Label>Service Type</Label>
+                    <Select>
+                      <SelectTrigger className="mt-1.5 bg-background/50">
+                        <SelectValue placeholder="Select service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="ftl">Full Truckload (FTL)</SelectItem>
+                        <SelectItem value="ltl">Less Than Truckload (LTL)</SelectItem>
+                        <SelectItem value="expedited">Expedited</SelectItem>
+                        <SelectItem value="general">General Freight</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="date">Preferred Pickup Date</Label>
+                  <Input id="date" type="date" className="mt-1.5 bg-background/50" />
+                </div>
+
+                <div>
+                  <Label htmlFor="notes">Additional Notes</Label>
+                  <Textarea
+                    id="notes"
+                    placeholder="Any special requirements, hazmat info, or additional details..."
+                    rows={4}
+                    className="mt-1.5 bg-background/50"
+                  />
+                </div>
+
+                <Button type="submit" size="lg" className="w-full gap-2 h-12 shadow-lg shadow-primary/20" disabled={loading}>
+                  {loading ? "Submitting..." : (
+                    <>Submit Quote Request <ArrowRight className="h-4 w-4" /></>
+                  )}
+                </Button>
+
+                <div className="flex items-center justify-center gap-4 pt-2">
+                  {["Free quote", "No obligation", "Fast response"].map((t) => (
+                    <div key={t} className="flex items-center gap-1.5 text-xs text-muted-foreground">
+                      <CheckCircle2 className="h-3 w-3 text-primary" />
+                      {t}
+                    </div>
+                  ))}
+                </div>
+              </form>
             </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <Label htmlFor="pickup">Pickup Location</Label>
-                <Input id="pickup" placeholder="City, State" required className="mt-1.5" />
-              </div>
-              <div>
-                <Label htmlFor="delivery">Delivery Location</Label>
-                <Input id="delivery" placeholder="City, State" required className="mt-1.5" />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div>
-                <Label htmlFor="weight">Estimated Weight (lbs)</Label>
-                <Input id="weight" type="number" placeholder="e.g. 10000" className="mt-1.5" />
-              </div>
-              <div>
-                <Label>Freight Type</Label>
-                <Select>
-                  <SelectTrigger className="mt-1.5">
-                    <SelectValue placeholder="Select type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="dry-van">Dry Van</SelectItem>
-                    <SelectItem value="flatbed">Flatbed</SelectItem>
-                    <SelectItem value="reefer">Reefer</SelectItem>
-                    <SelectItem value="other">Other</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            <div>
-              <Label htmlFor="notes">Additional Notes</Label>
-              <Textarea id="notes" placeholder="Any special requirements or details..." rows={4} className="mt-1.5" />
-            </div>
-
-            <Button type="submit" size="lg" className="w-full gap-2" disabled={loading}>
-              {loading ? "Submitting..." : <>Submit Quote Request <ArrowRight className="h-4 w-4" /></>}
-            </Button>
-
-            <p className="text-xs text-center text-muted-foreground">
-              We typically respond within 24 hours. Your information is kept confidential.
-            </p>
-          </form>
+          </div>
         </div>
       </section>
     </div>

@@ -3,8 +3,42 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Phone, Mail, MapPin, Send, Clock, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
+import { Link } from "react-router-dom";
+
+const contactInfo = [
+  {
+    icon: MapPin,
+    label: "Address",
+    value: "Saint Louis, Missouri, USA",
+    sub: "Serving all 48 contiguous states",
+    color: "primary",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "(314) 555-0123",
+    sub: "Mon-Fri 7:00 AM - 7:00 PM CST",
+    color: "secondary",
+    href: "tel:+13145550123",
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "info@davrgroup.com",
+    sub: "We respond within 2 hours",
+    color: "primary",
+    href: "mailto:info@davrgroup.com",
+  },
+  {
+    icon: Clock,
+    label: "Business Hours",
+    value: "Mon — Fri: 7 AM - 7 PM",
+    sub: "Emergency dispatch available 24/7",
+    color: "secondary",
+  },
+];
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
@@ -21,37 +55,117 @@ const Contact = () => {
 
   return (
     <div>
-      <section className="py-20 md:py-28">
-        <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-primary text-sm font-semibold uppercase tracking-wider mb-2">Contact Us</p>
-            <h1 className="text-3xl md:text-5xl font-bold mb-4">Get in Touch</h1>
-            <p className="text-muted-foreground text-lg">
-              Have questions or need a quote? We'd love to hear from you.
+      {/* Hero */}
+      <section className="relative py-24 md:py-32 overflow-hidden">
+        <div className="absolute inset-0 hero-gradient" />
+        <div className="container mx-auto px-4 relative">
+          <div className="text-center max-w-3xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-6">
+              Contact Us
+            </div>
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6">
+              Get in <span className="text-gradient">Touch</span>
+            </h1>
+            <p className="text-muted-foreground text-lg max-w-xl mx-auto">
+              Have questions or need a quote? We'd love to hear from you. Our team is ready to help with your freight needs.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            <div>
-              <div className="space-y-6 mb-10">
-                {[
-                  { icon: MapPin, label: "Address", value: "Saint Louis, Missouri, USA" },
-                  { icon: Phone, label: "Phone", value: "(314) 555-0123" },
-                  { icon: Mail, label: "Email", value: "info@davrgroup.com" },
-                ].map((c) => (
-                  <div key={c.label} className="flex items-start gap-4 p-4 rounded-xl border border-border bg-card">
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <c.icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <div>
-                      <p className="text-sm text-muted-foreground">{c.label}</p>
-                      <p className="font-medium">{c.value}</p>
-                    </div>
+      {/* Contact Cards */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            {contactInfo.map((c) => {
+              const Wrapper = c.href ? "a" : "div";
+              return (
+                <Wrapper
+                  key={c.label}
+                  {...(c.href ? { href: c.href } : {})}
+                  className={`group flex flex-col items-center text-center p-6 rounded-2xl border border-border/50 bg-card/30 hover:bg-card/60 transition-all duration-500 ${
+                    c.color === "primary" ? "hover:border-primary/20" : "hover:border-secondary/20"
+                  }`}
+                >
+                  <div className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-all duration-300 ${
+                    c.color === "primary" ? "bg-primary/10" : "bg-secondary/10"
+                  }`}>
+                    <c.icon className={`h-5 w-5 ${c.color === "primary" ? "text-primary" : "text-secondary"}`} />
                   </div>
-                ))}
-              </div>
+                  <p className="text-[10px] text-muted-foreground uppercase tracking-widest mb-1">{c.label}</p>
+                  <p className="font-semibold text-sm mb-1">{c.value}</p>
+                  <p className="text-xs text-muted-foreground leading-snug">{c.sub}</p>
+                </Wrapper>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-              <div className="rounded-xl overflow-hidden border border-border h-64">
+      {/* Form + Map */}
+      <section className="py-16 md:py-24">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+            {/* Form */}
+            <div>
+              <form
+                onSubmit={handleSubmit}
+                className="space-y-5 p-8 md:p-10 rounded-2xl border border-border/50 bg-card/30"
+              >
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold mb-2">Send Us a Message</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Fill out the form below and we'll get back to you as soon as possible.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <Label htmlFor="name">Full Name</Label>
+                    <Input id="name" placeholder="John Doe" required className="mt-1.5 bg-background/50" />
+                  </div>
+                  <div>
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" placeholder="john@example.com" required className="mt-1.5 bg-background/50" />
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input id="phone" type="tel" placeholder="(314) 555-0000" className="mt-1.5 bg-background/50" />
+                </div>
+
+                <div>
+                  <Label htmlFor="subject">Subject</Label>
+                  <Input id="subject" placeholder="How can we help?" className="mt-1.5 bg-background/50" />
+                </div>
+
+                <div>
+                  <Label htmlFor="message">Message</Label>
+                  <Textarea
+                    id="message"
+                    placeholder="Tell us about your freight needs..."
+                    rows={5}
+                    required
+                    className="mt-1.5 bg-background/50"
+                  />
+                </div>
+
+                <Button type="submit" className="w-full gap-2 h-11 shadow-lg shadow-primary/20" disabled={loading}>
+                  {loading ? "Sending..." : (
+                    <>Send Message <Send className="h-4 w-4" /></>
+                  )}
+                </Button>
+
+                <p className="text-xs text-center text-muted-foreground">
+                  We typically respond within 2 hours during business hours.
+                </p>
+              </form>
+            </div>
+
+            {/* Map + CTA */}
+            <div className="space-y-6">
+              <div className="rounded-2xl overflow-hidden border border-border/50 h-80 lg:h-[400px]">
                 <iframe
                   title="Davr Group Location"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d398516.35!2d-90.50!3d38.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d8b4a9faed8ef9%3A0xbe39eaca22bbe05b!2sSt.%20Louis%2C%20MO!5e0!3m2!1sen!2sus!4v1"
@@ -63,30 +177,19 @@ const Contact = () => {
                   referrerPolicy="no-referrer-when-downgrade"
                 />
               </div>
-            </div>
 
-            <form onSubmit={handleSubmit} className="space-y-5 p-6 md:p-8 rounded-xl border border-border bg-card">
-              <h3 className="text-xl font-semibold mb-2">Send Us a Message</h3>
-              <div>
-                <Label htmlFor="name">Full Name</Label>
-                <Input id="name" placeholder="John Doe" required className="mt-1.5" />
+              <div className="p-8 rounded-2xl border border-border/50 bg-gradient-to-br from-primary/5 via-card/30 to-secondary/5">
+                <h3 className="text-xl font-bold mb-3">Need a Quick Quote?</h3>
+                <p className="text-muted-foreground text-sm mb-5">
+                  Use our quote form to get a competitive rate for your shipment. We respond within 24 hours.
+                </p>
+                <Link to="/quote">
+                  <Button className="gap-2 shadow-lg shadow-primary/20">
+                    Get a Free Quote <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
               </div>
-              <div>
-                <Label htmlFor="email">Email</Label>
-                <Input id="email" type="email" placeholder="john@example.com" required className="mt-1.5" />
-              </div>
-              <div>
-                <Label htmlFor="phone">Phone</Label>
-                <Input id="phone" type="tel" placeholder="(314) 555-0000" className="mt-1.5" />
-              </div>
-              <div>
-                <Label htmlFor="message">Message</Label>
-                <Textarea id="message" placeholder="How can we help you?" rows={4} required className="mt-1.5" />
-              </div>
-              <Button type="submit" className="w-full gap-2" disabled={loading}>
-                {loading ? "Sending..." : <>Send Message <Send className="h-4 w-4" /></>}
-              </Button>
-            </form>
+            </div>
           </div>
         </div>
       </section>

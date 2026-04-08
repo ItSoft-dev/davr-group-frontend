@@ -1,81 +1,210 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Truck, Clock, Shield, Users, MapPin, ArrowRight, Package, Zap, ChevronRight } from "lucide-react";
+import {
+  Truck, Clock, Shield, Users, MapPin, ArrowRight, Package, Zap,
+  ChevronRight, Star, CheckCircle2, Phone, TrendingUp, Route, Headphones,
+} from "lucide-react";
 import heroImg from "@/assets/hero-truck.jpg";
 import fleetImg from "@/assets/fleet-trucks.jpg";
 
 const services = [
-  { icon: Package, title: "Full Truckload (FTL)", desc: "Dedicated truck for your full-size shipments across all 48 states." },
-  { icon: Truck, title: "Less Than Truckload", desc: "Cost-effective shipping for smaller freight that doesn't fill a full trailer." },
-  { icon: Zap, title: "Expedited Shipping", desc: "Time-sensitive deliveries with priority handling and faster transit times." },
-  { icon: MapPin, title: "Interstate Freight", desc: "Reliable point-to-point freight transportation across the United States." },
+  {
+    icon: Package,
+    title: "Full Truckload (FTL)",
+    desc: "Dedicated truck for your full-size shipments across all 48 states.",
+    color: "primary",
+  },
+  {
+    icon: Truck,
+    title: "Less Than Truckload",
+    desc: "Cost-effective shipping for smaller freight that doesn't fill a full trailer.",
+    color: "secondary",
+  },
+  {
+    icon: Zap,
+    title: "Expedited Shipping",
+    desc: "Time-sensitive deliveries with priority handling and faster transit times.",
+    color: "primary",
+  },
+  {
+    icon: Route,
+    title: "Interstate Freight",
+    desc: "Reliable point-to-point freight transportation across the United States.",
+    color: "secondary",
+  },
 ];
 
 const reasons = [
-  { icon: Clock, title: "On-Time Delivery", desc: "We understand deadlines matter. Our track record speaks for itself." },
-  { icon: Users, title: "Experienced Drivers", desc: "5 professional drivers with extensive knowledge of US highways." },
-  { icon: Shield, title: "Safe Transportation", desc: "Well-maintained equipment and strict safety protocols on every haul." },
-  { icon: Truck, title: "Customer-Focused", desc: "Personalized service and direct communication — no runaround." },
+  {
+    icon: Clock,
+    title: "On-Time Delivery",
+    desc: "We understand deadlines matter. Our track record speaks for itself.",
+    stat: "98%",
+    statLabel: "On-time rate",
+  },
+  {
+    icon: Users,
+    title: "Experienced Drivers",
+    desc: "5 professional drivers with extensive knowledge of US highways.",
+    stat: "5+",
+    statLabel: "Years avg. exp.",
+  },
+  {
+    icon: Shield,
+    title: "Safe Transportation",
+    desc: "Well-maintained equipment and strict safety protocols on every haul.",
+    stat: "0",
+    statLabel: "Incidents",
+  },
+  {
+    icon: Headphones,
+    title: "24/7 Support",
+    desc: "Direct communication — no runaround. Always reachable when you need us.",
+    stat: "24/7",
+    statLabel: "Availability",
+  },
+];
+
+const stats = [
+  { value: "3", label: "Active Trucks", icon: Truck },
+  { value: "5", label: "Pro Drivers", icon: Users },
+  { value: "48", label: "States Covered", icon: MapPin },
+  { value: "98%", label: "On-Time Rate", icon: TrendingUp },
 ];
 
 const Index = () => (
   <div>
-    {/* Hero */}
-    <section className="relative min-h-[90vh] flex items-center">
+    {/* Hero — always dark */}
+    <section className="dark relative min-h-[100vh] flex items-center overflow-hidden bg-[#0B0F19] text-white">
+      {/* Background image */}
       <div className="absolute inset-0">
-        <img src={heroImg} alt="Semi truck on highway at dusk" className="w-full h-full object-cover" width={1920} height={1080} />
-        <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
+        <img
+          src={heroImg}
+          alt="Semi truck on highway at dusk"
+          className="w-full h-full object-cover scale-105"
+          width={1920}
+          height={1080}
+        />
+        <div className="absolute inset-0 hero-overlay-x" />
+        <div className="absolute inset-0 hero-overlay-y" />
       </div>
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 text-primary text-sm font-medium mb-6 animate-fade-up">
-            <Truck className="h-4 w-4" /> USDOT #3371810 — Licensed Carrier
+
+      {/* Decorative elements */}
+      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 left-1/4 w-72 h-72 bg-secondary/5 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 relative z-10 py-20">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 backdrop-blur-sm text-primary text-sm font-medium mb-8 animate-fade-up">
+            <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+            Licensed & Insured Carrier
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold leading-tight mb-6 animate-fade-up animation-delay-200">
-            Reliable Trucking Services{" "}
+
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-[1.1] mb-6 animate-fade-up animation-delay-200">
+            Reliable Trucking{" "}
+            <br className="hidden sm:block" />
+            Services{" "}
             <span className="text-gradient">Across the USA</span>
           </h1>
-          <p className="text-lg md:text-xl text-muted-foreground mb-8 animate-fade-up animation-delay-400">
-            Fast, safe, and on-time freight delivery you can trust. Davr Group LLC — your dependable partner in logistics.
+
+          <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed animate-fade-up animation-delay-400">
+            Fast, safe, and on-time freight delivery you can trust.
+            Davr Group LLC — your dependable partner for interstate logistics.
           </p>
+
           <div className="flex flex-wrap gap-4 animate-fade-up animation-delay-600">
             <Link to="/quote">
-              <Button size="lg" className="gap-2">
-                Get a Quote <ArrowRight className="h-4 w-4" />
+              <Button size="lg" className="gap-2 h-12 px-8 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all">
+                Get a Free Quote <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
             <Link to="/contact">
-              <Button size="lg" variant="outline" className="gap-2 border-muted-foreground/30">
+              <Button size="lg" variant="outline" className="gap-2 h-12 px-8 text-base border-white/20 text-white hover:bg-white/10">
+                <Phone className="h-4 w-4" />
                 Contact Us
               </Button>
             </Link>
           </div>
+
+          {/* Trust badges */}
+          <div className="flex flex-wrap gap-6 mt-12 animate-fade-up animation-delay-800">
+            {[
+              "Licensed & Insured",
+              "GPS Tracked Fleet",
+              "48 State Coverage",
+            ].map((badge) => (
+              <div key={badge} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <CheckCircle2 className="h-4 w-4 text-primary" />
+                {badge}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom gradient fade — transitions to actual page background */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 hero-bottom-fade" />
+    </section>
+
+    {/* Stats Bar */}
+    <section className="relative -mt-16 z-20 pb-10">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          {stats.map((s, i) => (
+            <div
+              key={s.label}
+              className={`relative p-6 rounded-2xl border border-border/50 bg-card/80 backdrop-blur-xl text-center group hover:border-primary/30 transition-all duration-500 animate-fade-up animation-delay-${(i + 1) * 100}`}
+            >
+              <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-primary/20 transition-colors">
+                <s.icon className="h-5 w-5 text-primary" />
+              </div>
+              <div className="text-3xl md:text-4xl font-bold text-foreground mb-1">{s.value}</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
 
     {/* Services */}
-    <section className="py-20 md:py-28">
+    <section className="py-24 md:py-32">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-xl mx-auto mb-14">
-          <p className="text-primary text-sm font-semibold uppercase tracking-wider mb-2">What We Offer</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-          <p className="text-muted-foreground">From full truckloads to expedited shipping — we move your freight safely and on time.</p>
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
+            What We Offer
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-5">
+            Our <span className="text-gradient">Services</span>
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            From full truckloads to expedited shipping — we move your freight safely and on time.
+          </p>
         </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((s) => (
-            <div key={s.title} className="group p-6 rounded-xl border border-border bg-card hover:border-primary/40 hover:glow-green transition-all duration-300">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                <s.icon className="h-6 w-6 text-primary" />
+            <div
+              key={s.title}
+              className="group relative p-7 rounded-2xl border border-border/50 bg-card/50 hover:bg-card hover:border-primary/30 transition-all duration-500"
+            >
+              <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-b from-primary/5 to-transparent" />
+              <div className="relative">
+                <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300">
+                  <s.icon className="h-7 w-7 text-primary" />
+                </div>
+                <h3 className="font-bold text-lg mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <div className="mt-4 flex items-center gap-1 text-primary text-sm font-medium opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                  Learn more <ArrowRight className="h-3.5 w-3.5" />
+                </div>
               </div>
-              <h3 className="font-semibold text-lg mb-2">{s.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>
-        <div className="text-center mt-10">
+
+        <div className="text-center mt-12">
           <Link to="/services">
-            <Button variant="outline" className="gap-2 border-muted-foreground/30">
+            <Button variant="outline" className="gap-2 border-border/50 hover:border-primary/30 hover:bg-primary/5">
               View All Services <ChevronRight className="h-4 w-4" />
             </Button>
           </Link>
@@ -84,20 +213,35 @@ const Index = () => (
     </section>
 
     {/* Why Choose Us */}
-    <section className="py-20 md:py-28 bg-card/50">
-      <div className="container mx-auto px-4">
-        <div className="text-center max-w-xl mx-auto mb-14">
-          <p className="text-secondary text-sm font-semibold uppercase tracking-wider mb-2">Why Davr Group</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Choose Us</h2>
-          <p className="text-muted-foreground">We may be small, but our commitment to quality and reliability is second to none.</p>
+    <section className="py-24 md:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 section-gradient" />
+      <div className="absolute inset-0 dot-pattern opacity-[0.03]" />
+
+      <div className="container mx-auto px-4 relative">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-xs font-semibold uppercase tracking-wider mb-4">
+            Why Davr Group
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold mb-5">
+            Why Choose <span className="text-gradient-blue">Us</span>
+          </h2>
+          <p className="text-muted-foreground text-lg">
+            We may be small, but our commitment to quality and reliability is second to none.
+          </p>
         </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {reasons.map((r) => (
-            <div key={r.title} className="text-center p-6">
-              <div className="w-14 h-14 rounded-full bg-secondary/10 flex items-center justify-center mx-auto mb-4">
-                <r.icon className="h-7 w-7 text-secondary" />
+            <div
+              key={r.title}
+              className="group text-center p-8 rounded-2xl border border-border/30 bg-card/30 hover:bg-card/60 hover:border-secondary/20 transition-all duration-500"
+            >
+              <div className="w-16 h-16 rounded-2xl bg-secondary/10 flex items-center justify-center mx-auto mb-5 group-hover:bg-secondary/15 group-hover:scale-110 transition-all duration-300">
+                <r.icon className="h-8 w-8 text-secondary" />
               </div>
-              <h3 className="font-semibold text-lg mb-2">{r.title}</h3>
+              <div className="text-2xl font-bold text-secondary mb-1">{r.stat}</div>
+              <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-4">{r.statLabel}</div>
+              <h3 className="font-bold text-lg mb-2">{r.title}</h3>
               <p className="text-sm text-muted-foreground">{r.desc}</p>
             </div>
           ))}
@@ -106,50 +250,154 @@ const Index = () => (
     </section>
 
     {/* Fleet Preview */}
-    <section className="py-20 md:py-28">
+    <section className="py-24 md:py-32">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div>
-            <p className="text-primary text-sm font-semibold uppercase tracking-wider mb-2">Our Fleet</p>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Well-Maintained Equipment</h2>
-            <p className="text-muted-foreground mb-6 leading-relaxed">
-              Our fleet of 3 trucks is regularly serviced and equipped with GPS tracking for real-time shipment visibility. Every vehicle meets the highest safety standards.
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
+              Our Fleet
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              Well-Maintained{" "}
+              <span className="text-gradient">Equipment</span>
+            </h2>
+            <p className="text-muted-foreground mb-8 leading-relaxed text-lg">
+              Our fleet of 3 trucks is regularly serviced and equipped with GPS tracking
+              for real-time shipment visibility. Every vehicle meets the highest safety standards.
             </p>
-            <ul className="space-y-3 mb-8">
-              {["3 well-maintained trucks", "GPS tracking on all vehicles", "Regular maintenance schedule", "DOT compliant equipment"].map((item) => (
-                <li key={item} className="flex items-center gap-3 text-sm">
-                  <div className="w-2 h-2 rounded-full bg-primary" />
+
+            <div className="space-y-4 mb-10">
+              {[
+                "3 well-maintained trucks",
+                "GPS tracking on all vehicles",
+                "Regular maintenance schedule",
+                "DOT compliant equipment",
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-3">
+                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
+                  </div>
                   <span className="text-muted-foreground">{item}</span>
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
+
             <Link to="/fleet">
-              <Button variant="outline" className="gap-2 border-muted-foreground/30">
+              <Button variant="outline" className="gap-2 border-border/50 hover:border-primary/30">
                 View Our Fleet <ChevronRight className="h-4 w-4" />
               </Button>
             </Link>
           </div>
-          <div className="rounded-xl overflow-hidden border border-border">
-            <img src={fleetImg} alt="Davr Group fleet of trucks" className="w-full h-auto" loading="lazy" width={1280} height={720} />
+
+          <div className="relative">
+            <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 blur-xl" />
+            <div className="relative rounded-2xl overflow-hidden border border-border/50">
+              <img
+                src={fleetImg}
+                alt="Davr Group fleet of trucks"
+                className="w-full h-auto"
+                loading="lazy"
+                width={1280}
+                height={720}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent dark:from-background/60" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/20 backdrop-blur-sm text-primary text-xs font-medium border border-primary/30">
+                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    GPS Tracked
+                  </div>
+                  <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary/20 backdrop-blur-sm text-secondary text-xs font-medium border border-secondary/30">
+                    DOT Compliant
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Testimonial / Trust */}
+    <section className="py-24 md:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 section-gradient" />
+      <div className="container mx-auto px-4 relative">
+        <div className="max-w-4xl mx-auto">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
+              Trusted by Partners
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold mb-5">
+              What Our <span className="text-gradient">Partners</span> Say
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                quote: "Davr Group has been a reliable carrier for us. They always deliver on time and communicate proactively throughout the process.",
+                name: "Mike R.",
+                role: "Freight Broker, Chicago IL",
+              },
+              {
+                quote: "Small fleet, big reliability. We've been working with them for over a year and they consistently exceed expectations.",
+                name: "Sarah T.",
+                role: "Logistics Manager, Dallas TX",
+              },
+            ].map((t) => (
+              <div key={t.name} className="p-8 rounded-2xl border border-border/50 bg-card/50">
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-primary text-primary" />
+                  ))}
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-6 italic">
+                  "{t.quote}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <div className="font-semibold text-sm">{t.name}</div>
+                    <div className="text-xs text-muted-foreground">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
     </section>
 
     {/* CTA */}
-    <section className="py-20 md:py-28 bg-gradient-to-br from-primary/10 via-background to-secondary/10">
-      <div className="container mx-auto px-4 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Ship?</h2>
-        <p className="text-muted-foreground text-lg mb-8 max-w-lg mx-auto">
-          Get a free quote today. We'll get your freight moving quickly and safely.
-        </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <Link to="/quote">
-            <Button size="lg" className="gap-2">Get a Free Quote <ArrowRight className="h-4 w-4" /></Button>
-          </Link>
-          <Link to="/contact">
-            <Button size="lg" variant="outline" className="gap-2 border-muted-foreground/30">Contact Us</Button>
-          </Link>
+    <section className="py-24 md:py-32 relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/8 via-background to-secondary/8" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+
+      <div className="container mx-auto px-4 text-center relative">
+        <div className="max-w-2xl mx-auto">
+          <h2 className="text-3xl md:text-5xl font-bold mb-5">
+            Ready to <span className="text-gradient">Ship?</span>
+          </h2>
+          <p className="text-muted-foreground text-lg mb-10 leading-relaxed">
+            Get a free quote today. We'll get your freight moving quickly, safely, and at a competitive rate.
+          </p>
+          <div className="flex flex-wrap gap-4 justify-center">
+            <Link to="/quote">
+              <Button size="lg" className="gap-2 h-12 px-8 text-base shadow-lg shadow-primary/25">
+                Get a Free Quote <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+            <Link to="/contact">
+              <Button size="lg" variant="outline" className="gap-2 h-12 px-8 text-base border-border hover:bg-muted/50">
+                Contact Us
+              </Button>
+            </Link>
+          </div>
+          <p className="text-xs text-muted-foreground mt-6">
+            No obligation. We typically respond within 2 hours during business hours.
+          </p>
         </div>
       </div>
     </section>
