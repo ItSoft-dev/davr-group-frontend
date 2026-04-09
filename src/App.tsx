@@ -13,6 +13,22 @@ import Contact from "./pages/Contact";
 import Quote from "./pages/Quote";
 import NotFound from "./pages/NotFound";
 
+// Admin pages
+import Login from "./pages/admin/Login";
+import AdminLayout from "./pages/admin/AdminLayout";
+import Dashboard from "./pages/admin/Dashboard";
+import AdminServices from "./pages/admin/AdminServices";
+import AdminFleet from "./pages/admin/AdminFleet";
+import AdminTestimonials from "./pages/admin/AdminTestimonials";
+import AdminContacts from "./pages/admin/AdminContacts";
+import AdminQuotes from "./pages/admin/AdminQuotes";
+import AdminStats from "./pages/admin/AdminStats";
+import AdminCompanyInfo from "./pages/admin/AdminCompanyInfo";
+import AdminTimeline from "./pages/admin/AdminTimeline";
+import AdminValues from "./pages/admin/AdminValues";
+import AdminWhyUs from "./pages/admin/AdminWhyUs";
+import AdminHero from "./pages/admin/AdminHero";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -22,17 +38,34 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <Layout>
-            <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/fleet" element={<Fleet />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/quote" element={<Quote />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Layout>
+          <Routes>
+            {/* Public routes */}
+            <Route element={<Layout><Index /></Layout>} path="/" />
+            <Route element={<Layout><About /></Layout>} path="/about" />
+            <Route element={<Layout><Services /></Layout>} path="/services" />
+            <Route element={<Layout><Fleet /></Layout>} path="/fleet" />
+            <Route element={<Layout><Contact /></Layout>} path="/contact" />
+            <Route element={<Layout><Quote /></Layout>} path="/quote" />
+
+            {/* Admin routes */}
+            <Route path="/admin/login" element={<Login />} />
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<Dashboard />} />
+              <Route path="services" element={<AdminServices />} />
+              <Route path="fleet" element={<AdminFleet />} />
+              <Route path="testimonials" element={<AdminTestimonials />} />
+              <Route path="contacts" element={<AdminContacts />} />
+              <Route path="quotes" element={<AdminQuotes />} />
+              <Route path="stats" element={<AdminStats />} />
+              <Route path="company" element={<AdminCompanyInfo />} />
+              <Route path="timeline" element={<AdminTimeline />} />
+              <Route path="values" element={<AdminValues />} />
+              <Route path="why-us" element={<AdminWhyUs />} />
+              <Route path="hero" element={<AdminHero />} />
+            </Route>
+
+            <Route path="*" element={<Layout><NotFound /></Layout>} />
+          </Routes>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
