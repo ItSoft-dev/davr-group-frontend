@@ -7,7 +7,6 @@ services:
       - "8200:80"
     networks:
       - dg_network
-
 networks:
   dg_network:
     external: true
