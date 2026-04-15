@@ -1,0 +1,14 @@
+services:
+  frontend:
+    image: ghcr.io/itsoft-dev/davr-group-frontend:latest
+    container_name: davr-group-frontend
+    restart: unless-stopped
+    ports:
+      - "8200:80"
+    networks:
+      - dg_network
+
+networks:
+  dg_network:
+    external: true
+    name: dg_network
