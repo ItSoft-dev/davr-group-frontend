@@ -3,7 +3,7 @@ import { Link, Outlet, useNavigate, useLocation } from "react-router-dom";
 import { authApi } from "@/lib/api";
 import {
   LayoutDashboard, Truck, Package, MessageSquare, FileText,
-  Users, Settings, LogOut, Menu, X, Star, BarChart3, Globe, Clock, Shield, Zap,
+  Users, Settings, LogOut, Menu, X, Star, BarChart3, Globe, Clock, Shield, Zap, Scale,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -20,6 +20,7 @@ const navItems = [
   { to: "/admin/values", icon: Shield, label: "Values" },
   { to: "/admin/why-us", icon: Zap, label: "Why Choose Us" },
   { to: "/admin/hero", icon: Settings, label: "Hero Section" },
+  { to: "/admin/legal", icon: Scale, label: "Legal Pages" },
 ];
 
 const AdminLayout = () => {

@@ -30,6 +30,7 @@ import AdminTimeline from "./pages/admin/AdminTimeline";
 import AdminValues from "./pages/admin/AdminValues";
 import AdminWhyUs from "./pages/admin/AdminWhyUs";
 import AdminHero from "./pages/admin/AdminHero";
+import AdminLegalPages from "./pages/admin/AdminLegalPages";
 
 const queryClient = new QueryClient();
 
@@ -66,6 +67,7 @@ const App = () => (
               <Route path="values" element={<AdminValues />} />
               <Route path="why-us" element={<AdminWhyUs />} />
               <Route path="hero" element={<AdminHero />} />
+              <Route path="legal" element={<AdminLegalPages />} />
             </Route>
 
             <Route path="*" element={<Layout><NotFound /></Layout>} />

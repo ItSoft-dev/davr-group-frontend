@@ -39,6 +39,7 @@ export const publicApi = {
   getValues: () => request<any[]>("/api/content/values"),
   getWhyChooseUs: () => request<any[]>("/api/content/why-choose-us"),
   getHero: () => request<any[]>("/api/content/hero"),
+  getLegalPage: (slug: string) => request<any>(`/api/content/legal/${slug}`),
   submitContact: (data: any) =>
     request<any>("/api/contacts/", { method: "POST", body: JSON.stringify(data) }),
   submitQuote: (data: any) =>
@@ -128,6 +129,14 @@ export const adminApi = {
     request<any>(`/api/content/hero/${id}`, { method: "PUT", body: JSON.stringify(data) }),
   deleteHero: (id: number) =>
     request<any>(`/api/content/hero/${id}`, { method: "DELETE" }),
+  // Legal Pages
+  getLegalPages: () => request<any[]>("/api/content/legal"),
+  createLegalPage: (data: any) =>
+    request<any>("/api/content/legal", { method: "POST", body: JSON.stringify(data) }),
+  updateLegalPage: (id: number, data: any) =>
+    request<any>(`/api/content/legal/${id}`, { method: "PUT", body: JSON.stringify(data) }),
+  deleteLegalPage: (id: number) =>
+    request<any>(`/api/content/legal/${id}`, { method: "DELETE" }),
   // Contacts
   getContacts: () => request<any[]>("/api/contacts/"),
   markContactRead: (id: number) =>
