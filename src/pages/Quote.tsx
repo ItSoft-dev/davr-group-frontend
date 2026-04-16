@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, CheckCircle2, Clock, Shield, Phone } from "lucide-react";
@@ -11,6 +13,7 @@ import { publicApi } from "@/lib/api";
 
 const Quote = () => {
   const [loading, setLoading] = useState(false);
+  const [agreed, setAgreed] = useState(false);
   const [freightType, setFreightType] = useState("");
   const [serviceType, setServiceType] = useState("");
   const { data: companyInfo = [] } = useQuery({ queryKey: ["companyInfo"], queryFn: publicApi.getCompanyInfo });
@@ -150,7 +153,42 @@ const Quote = () => {
                 </div>
                 <div><Label htmlFor="date">Preferred Pickup Date</Label><Input id="date" name="date" type="date" className="mt-1.5 bg-background/50" /></div>
                 <div><Label htmlFor="notes">Additional Notes</Label><Textarea id="notes" name="notes" placeholder="Any special requirements..." rows={4} className="mt-1.5 bg-background/50" /></div>
-                <Button type="submit" size="lg" className="w-full gap-2 h-12 shadow-lg shadow-primary/20" disabled={loading}>
+                {/* Terms & Privacy Agreement */}
+                <div className="rounded-xl border border-border/50 bg-background/30 p-5">
+                  <div className="flex items-start gap-3">
+                    <Checkbox
+                      id="agree"
+                      checked={agreed}
+                      onCheckedChange={(v) => setAgreed(v === true)}
+                      className="mt-0.5"
+                    />
+                    <label
+                      htmlFor="agree"
+                      className="text-sm text-muted-foreground leading-relaxed cursor-pointer select-none"
+                    >
+                      I agree to the{" "}
+                      <Link
+                        to="/terms"
+                        target="_blank"
+                        className="text-primary font-medium hover:underline"
+                      >
+                        Terms of Service
+                      </Link>{" "}
+                      and{" "}
+                      <Link
+                        to="/privacy"
+                        target="_blank"
+                        className="text-primary font-medium hover:underline"
+                      >
+                        Privacy Policy
+                      </Link>
+                      , including consent to receive SMS communications. Message
+                      &amp; data rates may apply. Reply STOP to opt out.
+                    </label>
+                  </div>
+                </div>
+
+                <Button type="submit" size="lg" className="w-full gap-2 h-12 shadow-lg shadow-primary/20" disabled={loading || !agreed}>
                   {loading ? "Submitting..." : <>Submit Quote Request <ArrowRight className="h-4 w-4" /></>}
                 </Button>
                 <div className="flex items-center justify-center gap-4 pt-2">

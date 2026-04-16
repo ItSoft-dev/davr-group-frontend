@@ -8,8 +8,12 @@ const Footer = () => (
     <div className="border-b border-border/30">
       <div className="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <h3 className="text-xl md:text-2xl font-bold mb-1">Ready to move your freight?</h3>
-          <p className="text-muted-foreground text-sm">Get a competitive quote in minutes. No obligation.</p>
+          <h3 className="text-xl md:text-2xl font-bold mb-1">
+            Ready to move your freight?
+          </h3>
+          <p className="text-muted-foreground text-sm">
+            Get a competitive quote in minutes. No obligation.
+          </p>
         </div>
         <Link to="/quote">
           <Button className="gap-2 h-11 px-6 shadow-lg shadow-primary/20">
@@ -30,18 +34,22 @@ const Footer = () => (
             </div>
             <div className="flex flex-col">
               <span className="text-lg font-bold leading-none">Davr Group</span>
-              <span className="text-[10px] font-medium tracking-[0.2em] text-primary/80 uppercase">Logistics LLC</span>
+              <span className="text-[10px] font-medium tracking-[0.2em] text-primary/80 uppercase">
+                Logistics LLC
+              </span>
             </div>
           </Link>
           <p className="text-muted-foreground text-sm leading-relaxed mb-5">
-            Reliable freight transportation across the United States.
-            Safe, on-time deliveries you can count on.
+            Reliable freight transportation across the United States. Safe,
+            on-time deliveries you can count on.
           </p>
         </div>
 
         {/* Quick Links */}
         <div>
-          <h4 className="font-semibold text-sm uppercase tracking-wider mb-5 text-foreground">Quick Links</h4>
+          <h4 className="font-semibold text-sm uppercase tracking-wider mb-5 text-foreground">
+            Quick Links
+          </h4>
           <ul className="space-y-3 text-sm">
             {[
               { label: "Home", to: "/" },
@@ -49,7 +57,7 @@ const Footer = () => (
               { label: "Our Services", to: "/services" },
               { label: "Our Fleet", to: "/fleet" },
               { label: "Contact", to: "/contact" },
-              { label: "Get a Quote", to: "/quote" },
+              { label: "Drive With Us", to: "/quote" },
             ].map((l) => (
               <li key={l.to}>
                 <Link
@@ -66,7 +74,9 @@ const Footer = () => (
 
         {/* Services */}
         <div>
-          <h4 className="font-semibold text-sm uppercase tracking-wider mb-5 text-foreground">Our Services</h4>
+          <h4 className="font-semibold text-sm uppercase tracking-wider mb-5 text-foreground">
+            Our Services
+          </h4>
           <ul className="space-y-3 text-sm">
             {[
               "Full Truckload (FTL)",
@@ -75,7 +85,10 @@ const Footer = () => (
               "Expedited Shipping",
               "General Freight Delivery",
             ].map((s) => (
-              <li key={s} className="text-muted-foreground flex items-center gap-1.5">
+              <li
+                key={s}
+                className="text-muted-foreground flex items-center gap-1.5"
+              >
                 <span className="w-1 h-1 rounded-full bg-secondary/40" />
                 {s}
               </li>
@@ -85,7 +98,9 @@ const Footer = () => (
 
         {/* Contact */}
         <div>
-          <h4 className="font-semibold text-sm uppercase tracking-wider mb-5 text-foreground">Contact Info</h4>
+          <h4 className="font-semibold text-sm uppercase tracking-wider mb-5 text-foreground">
+            Contact Info
+          </h4>
           <ul className="space-y-4 text-sm">
             <li>
               <div className="flex items-start gap-3">
@@ -97,13 +112,19 @@ const Footer = () => (
               </div>
             </li>
             <li>
-              <a href="tel:+13145550123" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href="tel:+13145550123"
+                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+              >
                 <Phone className="h-4 w-4 text-primary flex-shrink-0" />
                 (314) 555-0123
               </a>
             </li>
             <li>
-              <a href="mailto:info@davrgroup.com" className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors">
+              <a
+                href="mailto:info@davrgroup.com"
+                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
+              >
                 <Mail className="h-4 w-4 text-primary flex-shrink-0" />
                 info@davrgroup.com
               </a>
@@ -126,6 +147,20 @@ const Footer = () => (
           © {new Date().getFullYear()} Davr Group LLC. All rights reserved.
         </p>
         <div className="flex items-center gap-6 text-xs text-muted-foreground">
+          <Link
+            to="/privacy"
+            className="hover:text-primary transition-colors duration-200"
+          >
+            Privacy Policy
+          </Link>
+          <span className="w-1 h-1 rounded-full bg-border" />
+          <Link
+            to="/terms"
+            className="hover:text-primary transition-colors duration-200"
+          >
+            Terms of Service
+          </Link>
+          <span className="w-1 h-1 rounded-full bg-border" />
           <span>Entity Type: Carrier</span>
           <span className="w-1 h-1 rounded-full bg-border" />
           <span>Saint Louis, MO</span>

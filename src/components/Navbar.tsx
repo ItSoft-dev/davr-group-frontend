@@ -31,19 +31,24 @@ const Navbar = () => {
   return (
     <div className={isHome ? "dark" : ""}>
       {/* Top bar */}
-      <div className={`hidden md:block fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
-        isHome
-          ? "bg-[#0B0F19] border-white/10"
-          : scrolled
-            ? "bg-background/80 backdrop-blur-2xl border-border/40"
-            : "bg-primary/10 border-primary/20"
-      }`}>
+      <div
+        className={`hidden md:block fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
+          isHome
+            ? "bg-[#0B0F19] border-white/10"
+            : scrolled
+              ? "bg-background/80 backdrop-blur-2xl border-border/40"
+              : "bg-primary/10 border-primary/20"
+        }`}
+      >
         <div className="container mx-auto px-4 flex items-center justify-between h-8 text-xs">
           <div className="flex items-center gap-4 text-muted-foreground">
             <span>Licensed Carrier</span>
           </div>
           <div className="flex items-center gap-4 text-muted-foreground">
-            <a href="tel:+13145550123" className="flex items-center gap-1.5 hover:text-primary transition-colors">
+            <a
+              href="tel:+13145550123"
+              className="flex items-center gap-1.5 hover:text-primary transition-colors"
+            >
               <Phone className="h-3 w-3" />
               (314) 555-0123
             </a>
@@ -102,8 +107,11 @@ const Navbar = () => {
             ))}
             <ThemeToggle />
             <Link to="/quote" className="ml-2">
-              <Button size="sm" className="gap-2 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow">
-                Get a Quote
+              <Button
+                size="sm"
+                className="gap-2 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow"
+              >
+                Drive With Us
               </Button>
             </Link>
           </div>
@@ -139,7 +147,9 @@ const Navbar = () => {
                 </Link>
               ))}
               <Link to="/quote" onClick={() => setOpen(false)} className="mt-3">
-                <Button className="w-full shadow-lg shadow-primary/20">Get a Quote</Button>
+                <Button className="w-full shadow-lg shadow-primary/20">
+                  Drive With Us
+                </Button>
               </Link>
               <div className="mt-4 pt-4 border-t border-border/30 flex items-center justify-center gap-2 text-xs text-muted-foreground">
                 <Phone className="h-3 w-3 text-primary" />

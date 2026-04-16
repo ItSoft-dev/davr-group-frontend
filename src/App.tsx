@@ -12,6 +12,8 @@ import Fleet from "./pages/Fleet";
 import Contact from "./pages/Contact";
 import Quote from "./pages/Quote";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsOfService from "./pages/TermsOfService";
 
 // Admin pages
 import Login from "./pages/admin/Login";
@@ -46,6 +48,8 @@ const App = () => (
             <Route element={<Layout><Fleet /></Layout>} path="/fleet" />
             <Route element={<Layout><Contact /></Layout>} path="/contact" />
             <Route element={<Layout><Quote /></Layout>} path="/quote" />
+            <Route element={<Layout><PrivacyPolicy /></Layout>} path="/privacy" />
+            <Route element={<Layout><TermsOfService /></Layout>} path="/terms" />
 
             {/* Admin routes */}
             <Route path="/admin/login" element={<Login />} />
