@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, CheckCircle2, Clock, Shield, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { publicApi } from "@/lib/api";
+import { formatPhoneDisplay, formatPhoneHref } from "@/lib/utils";
 
 const Quote = () => {
   const [loading, setLoading] = useState(false);
@@ -19,6 +20,7 @@ const Quote = () => {
   const { data: companyInfo = [] } = useQuery({ queryKey: ["companyInfo"], queryFn: publicApi.getCompanyInfo });
 
   const getInfo = (key: string) => companyInfo.find((c: any) => c.key === key)?.value || "";
+  const phoneValue = getInfo("phone");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -85,8 +87,8 @@ const Quote = () => {
                 <div className="p-7 rounded-2xl border border-border/50 bg-gradient-to-br from-primary/5 via-card/30 to-secondary/5">
                   <h3 className="font-bold text-lg mb-2">Prefer to call?</h3>
                   <p className="text-sm text-muted-foreground mb-4">Speak directly with our dispatch team for immediate assistance.</p>
-                  <a href={`tel:${getInfo("phone")}`} className="flex items-center gap-2 text-primary font-semibold hover:underline">
-                    <Phone className="h-4 w-4" /> {getInfo("phone") || "(314) 555-0123"}
+                  <a href={`tel:${formatPhoneHref(phoneValue)}`} className="flex items-center gap-2 text-primary font-semibold hover:underline">
+                    <Phone className="h-4 w-4" /> {formatPhoneDisplay(phoneValue)}
                   </a>
                 </div>
                 <div className="p-7 rounded-2xl border border-border/50 bg-card/30">

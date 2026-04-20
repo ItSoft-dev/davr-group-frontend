@@ -1,4 +1,5 @@
-const API_BASE = import.meta.env.VITE_API_URL || "";
+const DEFAULT_API_BASE = "http://5.129.205.241:8200";
+const API_BASE = (import.meta.env.VITE_API_URL || DEFAULT_API_BASE).replace(/\/$/, "");
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const token = localStorage.getItem("admin_token");

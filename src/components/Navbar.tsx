@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Truck, Phone } from "lucide-react";
+import { Menu, X, Truck, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle";
 
@@ -12,11 +12,19 @@ const navLinks = [
   { to: "/contact", label: "Contact" },
 ];
 
+const EMAIL_ADDRESS = "info@davrgroup.com";
+
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
+
+  const handleLogoClick = () => {
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -50,7 +58,7 @@ const Navbar = () => {
               className="flex items-center gap-1.5 hover:text-primary transition-colors"
             >
               <Phone className="h-3 w-3" />
-              (314) 555-0123
+              +1 (314) 555-0123
             </a>
             <span className="w-1 h-1 rounded-full bg-primary/50" />
             <span>Saint Louis, MO</span>
@@ -71,7 +79,7 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto px-4 flex items-center justify-between h-16 md:h-[72px]">
-          <Link to="/" className="flex items-center gap-2.5 group">
+          <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2.5 group">
             <div className="relative">
               <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300">
                 <Truck className="h-5 w-5 text-primary" />
@@ -106,6 +114,15 @@ const Navbar = () => {
               </Link>
             ))}
             <ThemeToggle />
+            <a href={`mailto:${EMAIL_ADDRESS}`} className="ml-2">
+              <Button
+                size="sm"
+                className="gap-2 bg-blue-600 text-white shadow-lg shadow-blue-500/20 hover:bg-blue-500 hover:shadow-blue-500/40 transition-all"
+              >
+                <Mail className="h-4 w-4" />
+                Our Email
+              </Button>
+            </a>
             <Link to="/quote" className="ml-2">
               <Button
                 size="sm"
@@ -151,9 +168,14 @@ const Navbar = () => {
                   Drive With Us
                 </Button>
               </Link>
+              <a href={`mailto:${EMAIL_ADDRESS}`} className="mt-3">
+                <Button className="w-full bg-blue-600 text-white shadow-lg shadow-blue-500/20 hover:bg-blue-500">
+                  <Mail className="h-4 w-4" /> Our Email
+                </Button>
+              </a>
               <div className="mt-4 pt-4 border-t border-border/30 flex items-center justify-center gap-2 text-xs text-muted-foreground">
                 <Phone className="h-3 w-3 text-primary" />
-                (314) 555-0123
+                +1 (314) 555-0123
               </div>
             </div>
           </div>

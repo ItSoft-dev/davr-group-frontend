@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { Shield, ArrowRight, ExternalLink } from "lucide-react";
 import { publicApi } from "@/lib/api";
+import { formatPhoneDisplay } from "@/lib/utils";
 
 interface Section {
   heading: string;
@@ -89,7 +90,7 @@ const PrivacyPolicy = () => {
     /* use fallback */
   }
 
-  const phone = getInfo("phone") || "(314) 555-0123";
+  const phone = formatPhoneDisplay(getInfo("phone"));
   const email = getInfo("email") || "info@davrgroup.com";
   const address = getInfo("address") || "Saint Louis, Missouri, United States";
 

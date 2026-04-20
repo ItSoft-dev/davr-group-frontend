@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { publicApi } from "@/lib/api";
 import { getIcon } from "@/lib/icons";
-import aboutImg from "@/assets/about-truck.jpg";
+import aboutHeroImage from "@/assets/about-img.jpg";
 
 const About = () => {
   const { data: values = [] } = useQuery({ queryKey: ["values"], queryFn: publicApi.getValues });
@@ -40,7 +40,7 @@ const About = () => {
             <div className="relative">
               <div className="absolute -inset-4 rounded-3xl bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 blur-xl" />
               <div className="relative rounded-2xl overflow-hidden border border-border/50">
-                <img src={aboutImg} alt="Truck on highway" className="w-full h-auto" loading="lazy" width={1280} height={720} />
+                <img src={aboutHeroImage} alt="Truck on highway" className="w-full h-auto object-cover scale-110" loading="lazy" width={1280} height={720} />
               </div>
             </div>
           </div>

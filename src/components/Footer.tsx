@@ -1,8 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Truck, Phone, Mail, MapPin, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const Footer = () => (
+const Footer = () => {
+  const location = useLocation();
+
+  const handleLogoClick = () => {
+    if (location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  return (
   <footer className="border-t border-border/50 bg-card/50">
     {/* CTA Strip */}
     <div className="border-b border-border/30">
@@ -28,7 +37,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
         {/* Brand */}
         <div className="lg:col-span-1">
-          <Link to="/" className="flex items-center gap-2.5 mb-5">
+          <Link to="/" onClick={handleLogoClick} className="flex items-center gap-2.5 mb-5">
             <div className="w-9 h-9 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
               <Truck className="h-5 w-5 text-primary" />
             </div>
@@ -117,7 +126,7 @@ const Footer = () => (
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone className="h-4 w-4 text-primary flex-shrink-0" />
-                (314) 555-0123
+                +1 (314) 555-0123
               </a>
             </li>
             <li>
@@ -168,6 +177,7 @@ const Footer = () => (
       </div>
     </div>
   </footer>
-);
+  );
+};
 
 export default Footer;

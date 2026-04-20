@@ -8,16 +8,18 @@ import { Phone, Mail, MapPin, Send, Clock, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { publicApi } from "@/lib/api";
+import { formatPhoneDisplay, formatPhoneHref } from "@/lib/utils";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
   const { data: companyInfo = [] } = useQuery({ queryKey: ["companyInfo"], queryFn: publicApi.getCompanyInfo });
 
   const getInfo = (key: string) => companyInfo.find((c: any) => c.key === key)?.value || "";
+  const phoneValue = getInfo("phone");
 
   const contactCards = [
     { icon: MapPin, label: "Address", value: getInfo("address") || "Saint Louis, Missouri, USA", sub: "Serving all 48 contiguous states", color: "primary" },
-    { icon: Phone, label: "Phone", value: getInfo("phone") || "(314) 555-0123", sub: "Mon-Fri 7:00 AM - 7:00 PM CST", color: "secondary", href: `tel:${getInfo("phone")}` },
+    { icon: Phone, label: "Phone", value: formatPhoneDisplay(phoneValue), sub: "Mon-Fri 7:00 AM - 7:00 PM CST", color: "secondary", href: `tel:${formatPhoneHref(phoneValue)}` },
     { icon: Mail, label: "Email", value: getInfo("email") || "info@davrgroup.com", sub: "We respond within 2 hours", color: "primary", href: `mailto:${getInfo("email")}` },
     { icon: Clock, label: "Business Hours", value: getInfo("hours") || "Mon — Fri: 7 AM - 7 PM", sub: getInfo("emergency") || "Emergency dispatch available 24/7", color: "secondary" },
   ];
