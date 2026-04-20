@@ -6,6 +6,66 @@ import { publicApi } from "@/lib/api";
 import { getIcon } from "@/lib/icons";
 import aboutHeroImage from "@/assets/about-img.jpg";
 
+const valuesPanelImage = "https://www.cittimagazine.co.uk/wp-content/uploads/2023/09/image-039-4.jpg";
+
+const metricStyles = [
+  {
+    panel: "from-emerald-500/12 via-emerald-500/4 to-transparent dark:from-emerald-500/14 dark:via-emerald-500/5 dark:to-transparent",
+    glow: "bg-emerald-400/14 dark:bg-emerald-400/18",
+    icon: "bg-emerald-500/10 text-emerald-600 ring-emerald-500/15 dark:bg-emerald-400/12 dark:text-emerald-300 dark:ring-emerald-400/15",
+    value: "text-emerald-600 dark:text-emerald-300",
+    note: "Fleet ready today",
+  },
+  {
+    panel: "from-sky-500/12 via-sky-500/4 to-transparent dark:from-sky-500/14 dark:via-sky-500/5 dark:to-transparent",
+    glow: "bg-sky-400/14 dark:bg-sky-400/18",
+    icon: "bg-sky-500/10 text-sky-600 ring-sky-500/15 dark:bg-sky-400/12 dark:text-sky-300 dark:ring-sky-400/15",
+    value: "text-sky-600 dark:text-sky-300",
+    note: "Experienced operators",
+  },
+  {
+    panel: "from-cyan-500/12 via-cyan-500/4 to-transparent dark:from-cyan-500/14 dark:via-cyan-500/5 dark:to-transparent",
+    glow: "bg-cyan-400/14 dark:bg-cyan-400/18",
+    icon: "bg-cyan-500/10 text-cyan-600 ring-cyan-500/15 dark:bg-cyan-400/12 dark:text-cyan-300 dark:ring-cyan-400/15",
+    value: "text-cyan-600 dark:text-cyan-300",
+    note: "Nationwide reach",
+  },
+  {
+    panel: "from-violet-500/12 via-violet-500/4 to-transparent dark:from-violet-500/14 dark:via-violet-500/5 dark:to-transparent",
+    glow: "bg-violet-400/14 dark:bg-violet-400/18",
+    icon: "bg-violet-500/10 text-violet-600 ring-violet-500/15 dark:bg-violet-400/12 dark:text-violet-300 dark:ring-violet-400/15",
+    value: "text-violet-600 dark:text-violet-300",
+    note: "Reliability tracked",
+  },
+];
+
+const valueCardStyles = [
+  {
+    border: "border-emerald-500/20 dark:border-emerald-400/15",
+    glow: "bg-emerald-400/14 dark:bg-emerald-400/18",
+    icon: "bg-emerald-500/10 text-emerald-500 ring-emerald-500/20 dark:bg-emerald-400/12 dark:text-emerald-300 dark:ring-emerald-400/20",
+    badge: "text-emerald-600 dark:text-emerald-300",
+  },
+  {
+    border: "border-sky-500/20 dark:border-sky-400/15",
+    glow: "bg-sky-400/14 dark:bg-sky-400/18",
+    icon: "bg-sky-500/10 text-sky-500 ring-sky-500/20 dark:bg-sky-400/12 dark:text-sky-300 dark:ring-sky-400/20",
+    badge: "text-sky-600 dark:text-sky-300",
+  },
+  {
+    border: "border-cyan-500/20 dark:border-cyan-400/15",
+    glow: "bg-cyan-400/14 dark:bg-cyan-400/18",
+    icon: "bg-cyan-500/10 text-cyan-500 ring-cyan-500/20 dark:bg-cyan-400/12 dark:text-cyan-300 dark:ring-cyan-400/20",
+    badge: "text-cyan-600 dark:text-cyan-300",
+  },
+  {
+    border: "border-violet-500/20 dark:border-violet-400/15",
+    glow: "bg-violet-400/14 dark:bg-violet-400/18",
+    icon: "bg-violet-500/10 text-violet-500 ring-violet-500/20 dark:bg-violet-400/12 dark:text-violet-300 dark:ring-violet-400/20",
+    badge: "text-violet-600 dark:text-violet-300",
+  },
+];
+
 const About = () => {
   const { data: values = [] } = useQuery({ queryKey: ["values"], queryFn: publicApi.getValues });
   const { data: stats = [] } = useQuery({ queryKey: ["stats"], queryFn: publicApi.getStats });
@@ -57,18 +117,60 @@ const About = () => {
             <h2 className="text-3xl md:text-5xl font-bold mb-5">What <span className="text-gradient-blue">Drives</span> Us</h2>
             <p className="text-muted-foreground text-lg">Our core values shape every delivery we make and every relationship we build.</p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto mb-12 md:mb-14">
+            <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-6 items-stretch rounded-[32px] border border-border/50 bg-card/30 overflow-hidden">
+              <div className="p-8 md:p-10 flex flex-col justify-between">
+                <div>
+                  <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+                    Built On Trust
+                  </div>
+                  <h3 className="mt-5 text-2xl md:text-3xl font-bold leading-tight max-w-md">Every load reflects the standards we expect from our own team.</h3>
+                  <p className="mt-4 text-muted-foreground leading-relaxed max-w-lg">From driver communication to equipment readiness and on-time performance, we focus on the details that make freight partnerships last.</p>
+                </div>
+                <div className="mt-8 grid grid-cols-2 gap-3 max-w-md">
+                  {[
+                    "Driver-focused service",
+                    "Clear communication",
+                    "Reliable execution",
+                    "Nationwide coverage",
+                  ].map((item) => (
+                    <div key={item} className="rounded-2xl border border-border/50 bg-background/40 px-4 py-3 text-sm font-medium text-foreground/90 backdrop-blur-sm">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="p-5 md:p-6 lg:p-7">
+                <div className="relative min-h-[300px] h-full overflow-hidden rounded-[28px] border border-border/50 bg-background/40">
+                  <img src={valuesPanelImage} alt="Truck driving on the highway" className="h-full w-full object-cover scale-105" loading="lazy" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="grid grid-cols-1 items-start sm:grid-cols-2 gap-8 md:gap-10 max-w-[90rem] mx-auto sm:pb-10">
             {values.map((v: any, i: number) => {
               const Icon = getIcon(v.icon);
-              const color = i % 2 === 0 ? "primary" : "secondary";
+              const style = valueCardStyles[i % valueCardStyles.length];
               return (
-                <div key={v.id} className="group flex gap-5 p-7 rounded-2xl border border-border/50 bg-card/30 hover:bg-card/60 hover:border-primary/20 transition-all duration-500">
-                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 transition-all duration-300 group-hover:scale-110 bg-${color}/10 group-hover:bg-${color}/15`}>
-                    <Icon className={`h-7 w-7 text-${color}`} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-lg mb-2">{v.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{v.description}</p>
+                <div
+                  key={v.id}
+                  className={`group relative overflow-hidden rounded-[28px] border bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] ${style.border} ${i % 2 === 1 ? "sm:translate-y-10" : ""}`}
+                >
+                  <div className={`absolute -right-10 -top-10 h-28 w-28 rounded-full blur-2xl ${style.glow}`} />
+                  <div className="absolute right-5 top-4 text-[64px] font-black leading-none text-white/[0.04] transition-transform duration-500 group-hover:scale-110">0{i + 1}</div>
+                  <div className="relative flex h-full flex-col">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl ring-1 transition-transform duration-300 group-hover:scale-110 ${style.icon}`}>
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <div className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${style.badge}`}>Core Value</div>
+                    </div>
+                    <div className="mt-8">
+                      <h3 className="text-2xl font-bold tracking-tight text-foreground">{v.title}</h3>
+                      <p className="mt-3 text-sm leading-7 text-muted-foreground">{v.description}</p>
+                    </div>
+                    <div className="mt-6 h-px w-full bg-gradient-to-r from-white/10 via-white/5 to-transparent" />
+                    <div className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground/80">Trusted in every shipment</div>
                   </div>
                 </div>
               );
@@ -108,19 +210,58 @@ const About = () => {
       <section className="py-24 md:py-32 relative">
         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/5" />
         <div className="container mx-auto px-4 relative">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((s: any) => {
-              const Icon = getIcon(s.icon);
-              return (
-                <div key={s.id} className="group text-center p-8 rounded-2xl border border-border/50 bg-card/30 hover:bg-card/60 hover:border-primary/20 transition-all duration-500">
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/15 group-hover:scale-110 transition-all duration-300">
-                    <Icon className="h-6 w-6 text-primary" />
+          <div className="overflow-hidden rounded-[36px] border border-slate-200/80 bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(244,247,251,0.96))] shadow-[0_24px_60px_rgba(15,23,42,0.10)] backdrop-blur-xl dark:border-white/10 dark:bg-[linear-gradient(180deg,rgba(15,23,40,0.96),rgba(10,16,30,0.96))] dark:shadow-[0_30px_90px_rgba(0,0,0,0.35)]">
+            <div className="grid gap-0 lg:grid-cols-[0.82fr_1.18fr]">
+              <div className="relative overflow-hidden border-b border-slate-200/80 p-6 md:p-8 lg:border-b-0 lg:border-r lg:p-10 dark:border-white/10">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,0.12),transparent_38%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.08),transparent_32%)] dark:bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,0.16),transparent_38%),radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.12),transparent_32%)]" />
+                <div className="absolute -right-16 top-10 h-40 w-40 rounded-full border border-slate-200/70 dark:border-white/10" />
+                <div className="absolute -right-8 top-18 h-24 w-24 rounded-full border border-slate-200/70 dark:border-white/10" />
+                <div className="relative">
+                  <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-primary">
+                    Live Metrics
                   </div>
-                  <div className="text-4xl md:text-5xl font-bold text-foreground mb-1">{s.value}{s.suffix}</div>
-                  <div className="text-sm font-semibold mb-1">{s.label}</div>
+                  <h3 className="mt-5 max-w-md text-3xl md:text-4xl font-bold leading-[1.05] tracking-tight text-slate-950 dark:text-white">Built for visible momentum, not just numbers on a card.</h3>
+                  <p className="mt-4 max-w-md text-sm md:text-base leading-relaxed text-slate-600 dark:text-white/65">These metrics show what the operation looks like in motion: available equipment, driver depth, service footprint, and delivery consistency.</p>
+                  <div className="mt-8 grid max-w-sm grid-cols-2 gap-3">
+                    {[
+                      "Dispatch ready",
+                      "DOT aligned",
+                      "48-state lanes",
+                      "Tracked service",
+                    ].map((item) => (
+                      <div key={item} className="rounded-2xl border border-slate-200 bg-white/80 px-3 py-3 text-xs font-medium uppercase tracking-[0.14em] text-slate-500 shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:text-white/60 dark:shadow-none">
+                        {item}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              );
-            })}
+              </div>
+
+              <div className="grid gap-4 p-4 md:grid-cols-2 md:p-5 lg:p-6">
+                {stats.map((s: any, i: number) => {
+                  const Icon = getIcon(s.icon);
+                  const style = metricStyles[i % metricStyles.length];
+                  return (
+                    <div
+                      key={s.id}
+                      className={`group relative overflow-hidden rounded-[28px] border border-slate-200/80 bg-gradient-to-br ${style.panel} bg-white/70 p-5 shadow-[0_14px_30px_rgba(15,23,42,0.06)] transition-all duration-500 hover:-translate-y-1 hover:border-slate-300 hover:shadow-[0_20px_40px_rgba(15,23,42,0.10)] dark:border-white/10 dark:bg-transparent dark:shadow-none dark:hover:border-white/15 dark:hover:shadow-2xl`}
+                    >
+                      <div className={`absolute -right-8 -top-8 h-28 w-28 rounded-full blur-2xl ${style.glow}`} />
+                      <div className="absolute right-4 top-3 text-[72px] font-black leading-none text-slate-900/[0.05] transition-transform duration-500 group-hover:scale-110 dark:text-white/[0.04]">0{i + 1}</div>
+                      <div className="relative">
+                        <div className={`inline-flex h-12 w-12 items-center justify-center rounded-2xl ring-1 ${style.icon}`}>
+                          <Icon className="h-5 w-5" />
+                        </div>
+                        <div className={`mt-10 text-4xl md:text-5xl font-bold leading-none ${style.value}`}>{s.value}{s.suffix}</div>
+                        <div className="mt-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-white/55">{s.label}</div>
+                        <div className="mt-6 h-px w-full bg-gradient-to-r from-slate-300 to-transparent dark:from-white/10" />
+                        <p className="mt-4 text-sm leading-relaxed text-slate-600 dark:text-white/62">{style.note}</p>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </section>

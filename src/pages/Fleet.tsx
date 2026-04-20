@@ -6,6 +6,40 @@ import { publicApi } from "@/lib/api";
 import { getIcon } from "@/lib/icons";
 import fleetImg from "@/assets/fleet-trucks.jpg";
 
+const vehicleImages = [
+  "https://www.cittimagazine.co.uk/wp-content/uploads/2023/09/image-039-4.jpg",
+  "https://www.freightwaves.com/wp-content/uploads/2020/05/USA_Truck_earnings_050720_1-1.jpg",
+  "https://t3.ftcdn.net/jpg/11/26/72/54/360_F_1126725414_NJ2NOn4tP6Y5stMqYONRwqJfGDtRZ6Ua.jpg",
+  "https://i.pinimg.com/originals/c4/7f/87/c47f87544d5f38f31dd12e1b93223b06.jpg?nii=t",
+];
+
+const featureCardStyles = [
+  {
+    border: "border-emerald-500/20 dark:border-emerald-400/15",
+    glow: "bg-emerald-400/14 dark:bg-emerald-400/18",
+    icon: "bg-emerald-500/10 text-emerald-500 ring-emerald-500/20 dark:bg-emerald-400/12 dark:text-emerald-300 dark:ring-emerald-400/20",
+    badge: "text-emerald-600 dark:text-emerald-300",
+  },
+  {
+    border: "border-sky-500/20 dark:border-sky-400/15",
+    glow: "bg-sky-400/14 dark:bg-sky-400/18",
+    icon: "bg-sky-500/10 text-sky-500 ring-sky-500/20 dark:bg-sky-400/12 dark:text-sky-300 dark:ring-sky-400/20",
+    badge: "text-sky-600 dark:text-sky-300",
+  },
+  {
+    border: "border-cyan-500/20 dark:border-cyan-400/15",
+    glow: "bg-cyan-400/14 dark:bg-cyan-400/18",
+    icon: "bg-cyan-500/10 text-cyan-500 ring-cyan-500/20 dark:bg-cyan-400/12 dark:text-cyan-300 dark:ring-cyan-400/20",
+    badge: "text-cyan-600 dark:text-cyan-300",
+  },
+  {
+    border: "border-violet-500/20 dark:border-violet-400/15",
+    glow: "bg-violet-400/14 dark:bg-violet-400/18",
+    icon: "bg-violet-500/10 text-violet-500 ring-violet-500/20 dark:bg-violet-400/12 dark:text-violet-300 dark:ring-violet-400/20",
+    badge: "text-violet-600 dark:text-violet-300",
+  },
+];
+
 const Fleet = () => {
   const { data: vehicles = [] } = useQuery({ queryKey: ["vehicles"], queryFn: publicApi.getVehicles });
   const { data: features = [] } = useQuery({ queryKey: ["fleetFeatures"], queryFn: publicApi.getFleetFeatures });
@@ -53,22 +87,26 @@ const Fleet = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our <span className="text-gradient">Vehicles</span></h2>
             <p className="text-muted-foreground">Each truck in our fleet is regularly inspected, maintained, and equipped with modern technology.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {vehicles.map((t: any) => (
-              <div key={t.id} className="group p-7 rounded-2xl border border-border/50 bg-card/30 hover:bg-card/60 hover:border-primary/20 transition-all duration-500">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {vehicles.map((t: any, i: number) => (
+              <div key={t.id} className="group overflow-hidden rounded-[28px] border border-border/50 bg-card/30 transition-all duration-500 hover:-translate-y-1 hover:border-primary/20 hover:bg-card/60 hover:shadow-[0_22px_50px_rgba(0,0,0,0.18)]">
                 <div className="flex items-center justify-between mb-5">
-                  <div>
+                  <div className="p-7 pb-0">
                     <h3 className="text-xl font-bold">{t.unit_number}</h3>
                     <p className="text-sm text-muted-foreground">{t.vehicle_type}</p>
                   </div>
-                  <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium border border-primary/20">
-                    <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> {t.status}
+                  <div className="p-7 pb-0">
+                    <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium border border-primary/20">
+                      <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" /> {t.status}
+                    </div>
                   </div>
                 </div>
-                <div className="w-full h-32 rounded-xl bg-gradient-to-br from-card to-muted/30 flex items-center justify-center mb-5 group-hover:from-primary/5 group-hover:to-secondary/5 transition-all duration-500">
-                  <Truck className="h-16 w-16 text-muted-foreground/30 group-hover:text-primary/40 transition-colors duration-500" />
+                <div className="px-7 pt-5">
+                  <div className="relative overflow-hidden rounded-[24px] border border-border/50 bg-background/40">
+                    <img src={vehicleImages[i % vehicleImages.length]} alt={t.unit_number} className="h-56 w-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  </div>
                 </div>
-                <div className="space-y-3">
+                <div className="space-y-3 p-7">
                   <div className="flex items-center justify-between text-sm">
                     <div className="flex items-center gap-2 text-muted-foreground"><Ruler className="h-4 w-4 text-primary/60" /> Length</div>
                     <span className="font-medium">53 ft</span>
@@ -101,16 +139,31 @@ const Fleet = () => {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-xs font-semibold uppercase tracking-wider mb-4">Fleet Features</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Our Fleet <span className="text-gradient-blue">Stands Out</span></h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {features.map((f: any) => {
+          <div className="grid grid-cols-1 items-start sm:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto sm:pb-10">
+            {features.map((f: any, i: number) => {
               const Icon = getIcon(f.icon);
+              const style = featureCardStyles[i % featureCardStyles.length];
               return (
-                <div key={f.id} className="group text-center p-7 rounded-2xl border border-border/30 bg-card/30 hover:bg-card/60 hover:border-secondary/20 transition-all duration-500">
-                  <div className="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-secondary/15 group-hover:scale-110 transition-all duration-300">
-                    <Icon className="h-7 w-7 text-secondary" />
+                <div
+                  key={f.id}
+                  className={`group relative overflow-hidden rounded-[28px] border bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] ${style.border} ${i % 2 === 1 ? "sm:translate-y-10" : ""}`}
+                >
+                  <div className={`absolute -right-10 -top-10 h-28 w-28 rounded-full blur-2xl ${style.glow}`} />
+                  <div className="absolute right-5 top-4 text-[64px] font-black leading-none text-white/[0.04] transition-transform duration-500 group-hover:scale-110">0{i + 1}</div>
+                  <div className="relative flex h-full flex-col">
+                    <div className="flex items-start justify-between gap-4">
+                      <div className={`inline-flex h-14 w-14 items-center justify-center rounded-2xl ring-1 transition-transform duration-300 group-hover:scale-110 ${style.icon}`}>
+                        <Icon className="h-7 w-7" />
+                      </div>
+                      <div className={`text-[11px] font-semibold uppercase tracking-[0.18em] ${style.badge}`}>Fleet Feature</div>
+                    </div>
+                    <div className="mt-8">
+                      <h3 className="text-2xl font-bold tracking-tight text-foreground">{f.title}</h3>
+                      <p className="mt-3 text-sm leading-7 text-muted-foreground">{f.description}</p>
+                    </div>
+                    <div className="mt-6 h-px w-full bg-gradient-to-r from-white/10 via-white/5 to-transparent" />
+                    <div className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground/80">Maintained for every mile</div>
                   </div>
-                  <h3 className="font-bold text-lg mb-2">{f.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{f.description}</p>
                 </div>
               );
             })}
