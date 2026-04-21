@@ -35,8 +35,8 @@ const Services = () => {
               <span className="text-gradient">Deliver</span>
             </h1>
             <p className="text-muted-foreground text-lg max-w-xl mx-auto">
-              Whether you need a full truckload or expedited delivery, Davr
-              Group LLC has the service to match your needs.
+              Whether you need a full truckload or expedited delivery,<br /> DAVR
+              GROUP LLC has the service to match your needs.
             </p>
 
             <div className="relative mt-14 max-w-5xl mx-auto">

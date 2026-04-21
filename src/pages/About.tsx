@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { publicApi } from "@/lib/api";
 import { getIcon } from "@/lib/icons";
-import aboutHeroImage from "@/assets/about-img.jpg";
+import aboutHeroImage from "@/assets/2.png";
 
 const valuesPanelImage = "https://www.cittimagazine.co.uk/wp-content/uploads/2023/09/image-039-4.jpg";
 
@@ -87,7 +87,7 @@ const About = () => {
                 A Small Company With <span className="text-gradient">Big Reliability</span>
               </h1>
               <p className="text-muted-foreground leading-relaxed mb-5 text-lg">
-                {getInfo("about_description") || "Davr Group LLC is a Saint Louis–based trucking company specializing in interstate freight transportation across the United States."}
+                {getInfo("about_description") || "DAVR GROUP LLC is a Saint Louis–based trucking company specializing in interstate freight transportation across the United States."}
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 {getInfo("about_mission") || "Our mission is to be the most reliable trucking partner for businesses across America."}
@@ -147,14 +147,17 @@ const About = () => {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 items-start sm:grid-cols-2 gap-8 md:gap-10 max-w-[90rem] mx-auto sm:pb-10">
+          <div className="grid grid-cols-1 items-start sm:grid-cols-2 gap-10 md:gap-12 max-w-[90rem] mx-auto sm:pb-12">
             {values.map((v: any, i: number) => {
               const Icon = getIcon(v.icon);
               const style = valueCardStyles[i % valueCardStyles.length];
+              const cardMotionClass = i % 2 === 1
+                ? "sm:translate-y-12 sm:hover:translate-y-7"
+                : "hover:-translate-y-4";
               return (
                 <div
                   key={v.id}
-                  className={`group relative overflow-hidden rounded-[28px] border bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] ${style.border} ${i % 2 === 1 ? "sm:translate-y-10" : ""}`}
+                  className={`group relative overflow-hidden rounded-[28px] border bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-7 transition-all duration-500 ${cardMotionClass} hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] ${style.border}`}
                 >
                   <div className={`absolute -right-10 -top-10 h-28 w-28 rounded-full blur-2xl ${style.glow}`} />
                   <div className="absolute right-5 top-4 text-[64px] font-black leading-none text-white/[0.04] transition-transform duration-500 group-hover:scale-110">0{i + 1}</div>

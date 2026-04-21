@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Shield, Radar, Truck, Ruler, Weight, Thermometer } from "lucide-react";
 import { publicApi } from "@/lib/api";
 import { getIcon } from "@/lib/icons";
-import fleetImg from "@/assets/fleet-trucks.jpg";
+import fleetImg from "@/assets/8.png";
 
 const vehicleImages = [
   "https://www.cittimagazine.co.uk/wp-content/uploads/2023/09/image-039-4.jpg",
@@ -139,14 +139,17 @@ const Fleet = () => {
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-secondary/20 bg-secondary/5 text-secondary text-xs font-semibold uppercase tracking-wider mb-4">Fleet Features</div>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Why Our Fleet <span className="text-gradient-blue">Stands Out</span></h2>
           </div>
-          <div className="grid grid-cols-1 items-start sm:grid-cols-2 gap-8 md:gap-10 max-w-6xl mx-auto sm:pb-10">
+          <div className="grid grid-cols-1 items-start sm:grid-cols-2 gap-10 md:gap-12 max-w-6xl mx-auto sm:pb-12">
             {features.map((f: any, i: number) => {
               const Icon = getIcon(f.icon);
               const style = featureCardStyles[i % featureCardStyles.length];
+              const cardMotionClass = i % 2 === 1
+                ? "sm:translate-y-12 sm:hover:translate-y-7"
+                : "hover:-translate-y-4";
               return (
                 <div
                   key={f.id}
-                  className={`group relative overflow-hidden rounded-[28px] border bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-7 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] ${style.border} ${i % 2 === 1 ? "sm:translate-y-10" : ""}`}
+                  className={`group relative overflow-hidden rounded-[28px] border bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-7 transition-all duration-500 ${cardMotionClass} hover:shadow-[0_20px_44px_rgba(0,0,0,0.18)] dark:bg-[linear-gradient(180deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))] ${style.border}`}
                 >
                   <div className={`absolute -right-10 -top-10 h-28 w-28 rounded-full blur-2xl ${style.glow}`} />
                   <div className="absolute right-5 top-4 text-[64px] font-black leading-none text-white/[0.04] transition-transform duration-500 group-hover:scale-110">0{i + 1}</div>

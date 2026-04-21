@@ -123,7 +123,7 @@ const Navbar = () => {
                 Our Email
               </Button>
             </a>
-            <Link to="/quote" className="ml-2">
+            <Link to="/drive-with-us" className="ml-2">
               <Button
                 size="sm"
                 className="gap-2 shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-shadow"
@@ -163,7 +163,7 @@ const Navbar = () => {
                   {l.label}
                 </Link>
               ))}
-              <Link to="/quote" onClick={() => setOpen(false)} className="mt-3">
+              <Link to="/drive-with-us" onClick={() => setOpen(false)} className="mt-3">
                 <Button className="w-full shadow-lg shadow-primary/20">
                   Drive With Us
                 </Button>

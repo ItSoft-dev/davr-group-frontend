@@ -37,7 +37,7 @@ const Login = () => {
             <Lock className="h-8 w-8 text-primary" />
           </div>
           <h1 className="text-2xl font-bold">Admin Panel</h1>
-          <p className="text-muted-foreground text-sm mt-1">Davr Group LLC</p>
+          <p className="text-muted-foreground text-sm mt-1">DAVR GROUP LLC</p>
         </div>
         <form onSubmit={handleSubmit} className="space-y-4 p-8 rounded-2xl border border-border/50 bg-card/50">
           <div>

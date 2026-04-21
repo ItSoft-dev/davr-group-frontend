@@ -144,13 +144,13 @@ const Index = () => {
             </h1>
 
             <p className="text-lg md:text-xl text-muted-foreground mb-10 max-w-xl leading-relaxed animate-fade-up animation-delay-400">
-              {heroData?.subtitle || "Fast, safe, and on-time freight delivery you can trust. Davr Group LLC — your dependable partner for interstate logistics."}
+              {heroData?.subtitle || "Fast, safe, and on-time freight delivery you can trust. DAVR GROUP LLC — your dependable partner for interstate logistics."}
             </p>
 
             <div className="flex flex-wrap gap-4 animate-fade-up animation-delay-600">
-              <Link to="/contact">
+              <Link to="/quote">
                 <Button size="lg" className="gap-2 h-12 px-8 text-base shadow-lg shadow-primary/25 hover:shadow-primary/40 transition-all">
-                  <Phone className="h-4 w-4" /> Get Started
+                  <Phone className="h-4 w-4" /> Get a Quote
                 </Button>
               </Link>
               <a href={`tel:${phoneHref}`}>

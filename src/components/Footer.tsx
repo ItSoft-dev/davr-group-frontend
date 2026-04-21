@@ -66,7 +66,7 @@ const Footer = () => {
               { label: "Our Services", to: "/services" },
               { label: "Our Fleet", to: "/fleet" },
               { label: "Contact", to: "/contact" },
-              { label: "Drive With Us", to: "/quote" },
+              { label: "Drive With Us", to: "/drive-with-us" },
             ].map((l) => (
               <li key={l.to}>
                 <Link
@@ -153,7 +153,7 @@ const Footer = () => {
     <div className="border-t border-border/30">
       <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Davr Group LLC. All rights reserved.
+          © {new Date().getFullYear()} DAVR GROUP LLC. All rights reserved.
         </p>
         <div className="flex items-center gap-6 text-xs text-muted-foreground">
           <Link
