@@ -109,7 +109,7 @@ const About = () => {
               </h1>
               <p className="text-muted-foreground leading-relaxed mb-5 text-lg">
                 {getInfo("about_description") ||
-                  "DAVR GROUP LLC is a trucking company based at 707 Lepere Ave Apt H, Saint Louis, MO 63132, USA, specializing in interstate freight transportation across the United States."}
+                  "DAVR GROUP LLC is a trucking company based at St. Louis, MO  specializing in interstate freight transportation across the United States."}
               </p>
               <p className="text-muted-foreground leading-relaxed mb-8">
                 {getInfo("about_mission") ||
