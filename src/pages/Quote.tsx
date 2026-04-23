@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -10,17 +9,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, CheckCircle2, Clock, Shield, Phone } from "lucide-react";
 import { toast } from "sonner";
 import { publicApi } from "@/lib/api";
-import { formatPhoneDisplay, formatPhoneHref } from "@/lib/utils";
+import { DEFAULT_PHONE, formatPhoneDisplay, formatPhoneHref } from "@/lib/utils";
 
 const Quote = () => {
   const [loading, setLoading] = useState(false);
   const [agreed, setAgreed] = useState(false);
   const [freightType, setFreightType] = useState("");
   const [serviceType, setServiceType] = useState("");
-  const { data: companyInfo = [] } = useQuery({ queryKey: ["companyInfo"], queryFn: publicApi.getCompanyInfo });
-
-  const getInfo = (key: string) => companyInfo.find((c: any) => c.key === key)?.value || "";
-  const phoneValue = getInfo("phone");
+  const phoneValue = DEFAULT_PHONE;
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -118,7 +114,7 @@ const Quote = () => {
                   <div><Label htmlFor="email">Email *</Label><Input id="email" name="email" type="email" placeholder="john@example.com" required className="mt-1.5 bg-background/50" /></div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                  <div><Label htmlFor="phone">Phone Number</Label><Input id="phone" name="phone" type="tel" placeholder="(314) 555-0000" className="mt-1.5 bg-background/50" /></div>
+                  <div><Label htmlFor="phone">Phone Number</Label><Input id="phone" name="phone" type="tel" placeholder="(405) 885-9080" className="mt-1.5 bg-background/50" /></div>
                   <div><Label htmlFor="company">Company Name</Label><Input id="company" name="company" placeholder="Your Company" className="mt-1.5 bg-background/50" /></div>
                 </div>
                 <div className="space-y-1.5 pt-4"><h4 className="text-sm font-semibold text-primary uppercase tracking-wider">Shipment Information</h4><div className="h-px bg-border/50" /></div>

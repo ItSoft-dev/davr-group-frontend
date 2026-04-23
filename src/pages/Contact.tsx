@@ -8,17 +8,17 @@ import { Phone, Mail, MapPin, Send, Clock, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
 import { publicApi } from "@/lib/api";
-import { formatPhoneDisplay, formatPhoneHref } from "@/lib/utils";
+import { DEFAULT_ADDRESS, DEFAULT_PHONE, formatPhoneDisplay, formatPhoneHref } from "@/lib/utils";
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
   const { data: companyInfo = [] } = useQuery({ queryKey: ["companyInfo"], queryFn: publicApi.getCompanyInfo });
 
   const getInfo = (key: string) => companyInfo.find((c: any) => c.key === key)?.value || "";
-  const phoneValue = getInfo("phone");
+  const phoneValue = DEFAULT_PHONE;
 
   const contactCards = [
-    { icon: MapPin, label: "Address", value: getInfo("address") || "Saint Louis, Missouri, USA", sub: "Serving all 48 contiguous states", color: "primary" },
+    { icon: MapPin, label: "Address", value: DEFAULT_ADDRESS, sub: "Serving all 48 contiguous states", color: "primary" },
     { icon: Phone, label: "Phone", value: formatPhoneDisplay(phoneValue), sub: "Mon-Fri 7:00 AM - 7:00 PM CST", color: "secondary", href: `tel:${formatPhoneHref(phoneValue)}` },
     { icon: Mail, label: "Email", value: getInfo("email") || "info@davrgroup.com", sub: "We respond within 2 hours", color: "primary", href: `mailto:${getInfo("email")}` },
     { icon: Clock, label: "Business Hours", value: getInfo("hours") || "Mon — Fri: 7 AM - 7 PM", sub: getInfo("emergency") || "Emergency dispatch available 24/7", color: "secondary" },
@@ -95,7 +95,7 @@ const Contact = () => {
                   <div><Label htmlFor="name">Full Name</Label><Input id="name" name="name" placeholder="John Doe" required className="mt-1.5 bg-background/50" /></div>
                   <div><Label htmlFor="email">Email</Label><Input id="email" name="email" type="email" placeholder="john@example.com" required className="mt-1.5 bg-background/50" /></div>
                 </div>
-                <div><Label htmlFor="phone">Phone</Label><Input id="phone" name="phone" type="tel" placeholder="(314) 555-0000" className="mt-1.5 bg-background/50" /></div>
+                <div><Label htmlFor="phone">Phone</Label><Input id="phone" name="phone" type="tel" placeholder="(405) 885-9080" className="mt-1.5 bg-background/50" /></div>
                 <div><Label htmlFor="subject">Subject</Label><Input id="subject" name="subject" placeholder="How can we help?" className="mt-1.5 bg-background/50" /></div>
                 <div><Label htmlFor="message">Message</Label><Textarea id="message" name="message" placeholder="Tell us about your freight needs..." rows={5} required className="mt-1.5 bg-background/50" /></div>
                 <Button type="submit" className="w-full gap-2 h-11 shadow-lg shadow-primary/20" disabled={loading}>
@@ -106,7 +106,7 @@ const Contact = () => {
             </div>
             <div className="space-y-6">
               <div className="rounded-2xl overflow-hidden border border-border/50 h-80 lg:h-[400px]">
-                <iframe title="Davr Group Location" src={getInfo("map_embed") || "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d398516.35!2d-90.50!3d38.63!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87d8b4a9faed8ef9%3A0xbe39eaca22bbe05b!2sSt.%20Louis%2C%20MO!5e0!3m2!1sen!2sus!4v1"} width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
+                <iframe title="Davr Group Location" src="https://www.google.com/maps?q=707+Lepere+Ave+Apt+H,+Saint+Louis,+MO+63132,+USA&output=embed" width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
               </div>
               <div className="p-8 rounded-2xl border border-border/50 bg-gradient-to-br from-primary/5 via-card/30 to-secondary/5">
                 <h3 className="text-xl font-bold mb-3">Need a Quick Quote?</h3>

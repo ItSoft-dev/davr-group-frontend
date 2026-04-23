@@ -5,11 +5,14 @@ import { ArrowRight, Shield, Radar, Truck, Ruler, Weight, Thermometer } from "lu
 import { publicApi } from "@/lib/api";
 import { getIcon } from "@/lib/icons";
 import fleetImg from "@/assets/8.png";
+import vehicles1Img from "@/assets/vehicles1.jpg";
+import vehicles2Img from "@/assets/vehicles2.jpg";
+import vehicles3Img from "@/assets/vehicles3.png";
 
 const vehicleImages = [
-  "https://www.cittimagazine.co.uk/wp-content/uploads/2023/09/image-039-4.jpg",
-  "https://www.freightwaves.com/wp-content/uploads/2020/05/USA_Truck_earnings_050720_1-1.jpg",
-  "https://t3.ftcdn.net/jpg/11/26/72/54/360_F_1126725414_NJ2NOn4tP6Y5stMqYONRwqJfGDtRZ6Ua.jpg",
+  vehicles1Img,
+  vehicles2Img,
+  vehicles3Img,
   "https://i.pinimg.com/originals/c4/7f/87/c47f87544d5f38f31dd12e1b93223b06.jpg?nii=t",
 ];
 

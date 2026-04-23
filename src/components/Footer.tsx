@@ -1,6 +1,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { Truck, Phone, Mail, MapPin, ArrowRight, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { DEFAULT_ADDRESS, DEFAULT_PHONE, formatPhoneHref } from "@/lib/utils";
 
 const Footer = () => {
   const location = useLocation();
@@ -115,18 +116,17 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                 <div>
-                  <p className="text-muted-foreground">Saint Louis, Missouri</p>
-                  <p className="text-muted-foreground text-xs">United States</p>
+                  <p className="text-muted-foreground">{DEFAULT_ADDRESS}</p>
                 </div>
               </div>
             </li>
             <li>
               <a
-                href="tel:+13145550123"
+                href={`tel:${formatPhoneHref(DEFAULT_PHONE)}`}
                 className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors"
               >
                 <Phone className="h-4 w-4 text-primary flex-shrink-0" />
-                +1 (314) 555-0123
+                {DEFAULT_PHONE}
               </a>
             </li>
             <li>
@@ -172,7 +172,7 @@ const Footer = () => {
           <span className="w-1 h-1 rounded-full bg-border" />
           <span>Entity Type: Carrier</span>
           <span className="w-1 h-1 rounded-full bg-border" />
-          <span>Saint Louis, MO</span>
+          <span>Saint Louis, MO 63132</span>
         </div>
       </div>
     </div>

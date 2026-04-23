@@ -13,6 +13,9 @@ const navLinks = [
 ];
 
 const EMAIL_ADDRESS = "info@davrgroup.com";
+const COMPANY_PHONE_DISPLAY = "+1 (405) 885-9080";
+const COMPANY_PHONE_HREF = "+14058859080";
+const COMPANY_LOCATION = "707 Lepere Ave Apt H, Saint Louis, MO 63132";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -54,14 +57,14 @@ const Navbar = () => {
           </div>
           <div className="flex items-center gap-4 text-muted-foreground">
             <a
-              href="tel:+13145550123"
+              href={`tel:${COMPANY_PHONE_HREF}`}
               className="flex items-center gap-1.5 hover:text-primary transition-colors"
             >
               <Phone className="h-3 w-3" />
-              +1 (314) 555-0123
+              {COMPANY_PHONE_DISPLAY}
             </a>
             <span className="w-1 h-1 rounded-full bg-primary/50" />
-            <span>Saint Louis, MO</span>
+            <span>{COMPANY_LOCATION}</span>
           </div>
         </div>
       </div>
@@ -175,7 +178,7 @@ const Navbar = () => {
               </a>
               <div className="mt-4 pt-4 border-t border-border/30 flex items-center justify-center gap-2 text-xs text-muted-foreground">
                 <Phone className="h-3 w-3 text-primary" />
-                +1 (314) 555-0123
+                {COMPANY_PHONE_DISPLAY}
               </div>
             </div>
           </div>

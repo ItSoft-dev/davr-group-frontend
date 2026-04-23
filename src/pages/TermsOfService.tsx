@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { FileText, ArrowRight, ExternalLink } from "lucide-react";
 import { publicApi } from "@/lib/api";
-import { formatPhoneDisplay } from "@/lib/utils";
+import { DEFAULT_ADDRESS, formatPhoneDisplay, formatPhoneHref } from "@/lib/utils";
 
 interface Section {
   heading: string;
@@ -90,9 +90,10 @@ const TermsOfService = () => {
     /* use fallback */
   }
 
-  const phone = formatPhoneDisplay(getInfo("phone"));
+  const phone = formatPhoneDisplay();
+  const phoneHref = formatPhoneHref();
   const email = getInfo("email") || "info@davrgroup.com";
-  const address = getInfo("address") || "Saint Louis, Missouri, United States";
+  const address = DEFAULT_ADDRESS;
 
   return (
     <div>
@@ -187,7 +188,7 @@ const TermsOfService = () => {
                 </div>
                 <div className="p-4 rounded-xl border border-border/30 bg-background/50 space-y-2">
                   <a
-                    href={`tel:${phone}`}
+                    href={`tel:${phoneHref}`}
                     className="flex items-center gap-2 text-sm text-primary hover:underline"
                   >
                     {phone}

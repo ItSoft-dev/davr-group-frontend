@@ -5,7 +5,8 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-const DEFAULT_PHONE = "+1 (314) 555-0123";
+export const DEFAULT_PHONE = "+1 (405) 885-9080";
+export const DEFAULT_ADDRESS = "707 Lepere Ave Apt H, Saint Louis, MO 63132, USA";
 
 export function formatPhoneDisplay(phone?: string, fallback = DEFAULT_PHONE) {
   const value = phone?.trim();
