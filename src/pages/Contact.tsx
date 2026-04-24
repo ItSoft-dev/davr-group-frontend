@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Phone, Mail, MapPin, Send, Clock, ArrowRight } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "react-router-dom";
@@ -12,6 +13,7 @@ import { DEFAULT_ADDRESS, DEFAULT_PHONE, formatPhoneDisplay, formatPhoneHref } f
 
 const Contact = () => {
   const [loading, setLoading] = useState(false);
+  const [agreed, setAgreed] = useState(false);
   const { data: companyInfo = [] } = useQuery({ queryKey: ["companyInfo"], queryFn: publicApi.getCompanyInfo });
 
   const getInfo = (key: string) => companyInfo.find((c: any) => c.key === key)?.value || "";
@@ -98,7 +100,38 @@ const Contact = () => {
                 <div><Label htmlFor="phone">Phone</Label><Input id="phone" name="phone" type="tel" placeholder="(405) 885-9080" className="mt-1.5 bg-background/50" /></div>
                 <div><Label htmlFor="subject">Subject</Label><Input id="subject" name="subject" placeholder="How can we help?" className="mt-1.5 bg-background/50" /></div>
                 <div><Label htmlFor="message">Message</Label><Textarea id="message" name="message" placeholder="Tell us about your freight needs..." rows={5} required className="mt-1.5 bg-background/50" /></div>
-                <Button type="submit" className="w-full gap-2 h-11 shadow-lg shadow-primary/20" disabled={loading}>
+                <div className="flex items-start gap-3">
+                  <Checkbox
+                    id="agree"
+                    checked={agreed}
+                    onCheckedChange={(v) => setAgreed(v === true)}
+                    className="mt-0.5"
+                  />
+                  <label
+                    htmlFor="agree"
+                    className="text-sm text-muted-foreground leading-relaxed cursor-pointer select-none"
+                  >
+                    I agree to the{" "}
+                    <Link
+                      to="/terms"
+                      target="_blank"
+                      className="text-primary font-medium hover:underline"
+                    >
+                      Terms of Service
+                    </Link>{" "}
+                    and{" "}
+                    <Link
+                      to="/privacy"
+                      target="_blank"
+                      className="text-primary font-medium hover:underline"
+                    >
+                      Privacy Policy
+                    </Link>
+                    , including consent to receive SMS communications. Message
+                    &amp; data rates may apply. Reply STOP to opt out.
+                  </label>
+                </div>
+                <Button type="submit" className="w-full gap-2 h-11 shadow-lg shadow-primary/20" disabled={loading || !agreed}>
                   {loading ? "Sending..." : <><Send className="h-4 w-4" /> Send Message</>}
                 </Button>
                 <p className="text-xs text-center text-muted-foreground">We typically respond within 2 hours during business hours.</p>

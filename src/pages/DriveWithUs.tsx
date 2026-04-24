@@ -160,15 +160,17 @@ const DriveWithUs = () => {
                 onCheckedChange={(checked) => setAgreed(checked === true)}
                 className="mt-0.5"
               />
-              <label htmlFor="agreement" className="text-sm text-muted-foreground leading-relaxed cursor-pointer">
+              <label htmlFor="agreement" className="text-sm text-muted-foreground leading-relaxed cursor-pointer select-none">
                 I agree to the{" "}
-                <Link to="/privacy" target="_blank" className="text-primary font-medium hover:underline">
-                  Privacy Policy
-                </Link>{" "}
-                and{" "}
                 <Link to="/terms" target="_blank" className="text-primary font-medium hover:underline">
                   Terms of Service
+                </Link>{" "}
+                and{" "}
+                <Link to="/privacy" target="_blank" className="text-primary font-medium hover:underline">
+                  Privacy Policy
                 </Link>
+                , including consent to receive SMS communications. Message
+                &amp; data rates may apply. Reply STOP to opt out.
               </label>
             </div>
 
