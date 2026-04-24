@@ -97,7 +97,7 @@ const Fleet = () => {
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />{" "}
                     All Units Active
                   </div>
-                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-foreground/10 backdrop-blur-sm text-foreground text-sm font-medium border border-foreground/20">
+                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 backdrop-blur-sm text-secondary text-sm font-medium border border-secondary/30">
                     <Shield className="h-3.5 w-3.5" /> DOT Compliant
                   </div>
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary/20 backdrop-blur-sm text-secondary text-sm font-medium border border-secondary/30">
