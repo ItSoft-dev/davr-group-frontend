@@ -154,7 +154,7 @@ const AdminLegalPages = () => {
     );
 
   return (
-    <div>
+    <div className="w-[1200px]">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h1 className="text-2xl font-bold">Legal Pages</h1>
@@ -181,15 +181,16 @@ const AdminLegalPages = () => {
 
           <div className="p-5 space-y-5">
             {/* Meta */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden">
               <div>
                 <Label>Slug *</Label>
-                <Input
+                <Textarea
                   value={slug}
                   onChange={(e) => setSlug(e.target.value)}
                   placeholder="privacy or terms"
-                  className="mt-1.5"
+                  className="mt-1.5 min-h-[40px] resize-y max-w-full overflow-hidden"
                   disabled={!!editing}
+                  rows={1}
                 />
                 <p className="text-xs text-muted-foreground mt-1">
                   URL: /{ slug || "slug" }
@@ -197,20 +198,22 @@ const AdminLegalPages = () => {
               </div>
               <div>
                 <Label>Title *</Label>
-                <Input
+                <Textarea
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Privacy Policy"
-                  className="mt-1.5"
+                  className="mt-1.5 min-h-[40px] resize-y max-w-full overflow-hidden"
+                  rows={1}
                 />
               </div>
               <div>
                 <Label>Last Updated</Label>
-                <Input
+                <Textarea
                   value={lastUpdated}
                   onChange={(e) => setLastUpdated(e.target.value)}
                   placeholder="April 16, 2026"
-                  className="mt-1.5"
+                  className="mt-1.5 min-h-[40px] resize-y max-w-full overflow-hidden"
+                  rows={1}
                 />
               </div>
             </div>
@@ -302,13 +305,14 @@ const AdminLegalPages = () => {
                         <div className="p-4 pt-0 space-y-3 border-t border-border/30">
                           <div>
                             <Label className="text-xs">Section Heading</Label>
-                            <Input
+                            <Textarea
                               value={section.heading}
                               onChange={(e) =>
                                 updateSection(idx, "heading", e.target.value)
                               }
                               placeholder="Leave empty for introduction paragraph"
-                              className="mt-1"
+                              className="mt-1 min-h-[40px] resize-y max-w-full overflow-hidden"
+                              rows={1}
                             />
                           </div>
                           <div>

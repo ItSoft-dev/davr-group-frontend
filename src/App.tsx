@@ -32,6 +32,7 @@ import AdminValues from "./pages/admin/AdminValues";
 import AdminWhyUs from "./pages/admin/AdminWhyUs";
 import AdminHero from "./pages/admin/AdminHero";
 import AdminLegalPages from "./pages/admin/AdminLegalPages";
+import AdminDriverApplications from "./pages/admin/AdminDriverApplications";
 
 const queryClient = new QueryClient();
 
@@ -70,6 +71,7 @@ const App = () => (
               <Route path="why-us" element={<AdminWhyUs />} />
               <Route path="hero" element={<AdminHero />} />
               <Route path="legal" element={<AdminLegalPages />} />
+              <Route path="driver-applications" element={<AdminDriverApplications />} />
             </Route>
 
             <Route path="*" element={<Layout><NotFound /></Layout>} />

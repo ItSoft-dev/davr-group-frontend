@@ -162,10 +162,7 @@ const Index = () => {
     .slice(0, 4);
   const phone = formatPhoneDisplay(DEFAULT_PHONE);
   const phoneHref = formatPhoneHref(DEFAULT_PHONE);
-  const testimonialItems = [...testimonials, ...fallbackTestimonials].slice(
-    0,
-    Math.max(8, testimonials.length),
-  );
+  const testimonialItems = testimonials.length > 0 ? testimonials : fallbackTestimonials;
 
   useEffect(() => {
     if (!testimonialApi) {
