@@ -162,11 +162,11 @@ const DriveWithUs = () => {
               />
               <label htmlFor="agreement" className="text-sm text-muted-foreground leading-relaxed cursor-pointer select-none">
                 I agree to the{" "}
-                <Link to="/terms" target="_blank" className="text-primary font-medium hover:underline">
+                <Link to="/terms-of-service" target="_blank" className="text-primary font-medium hover:underline">
                   Terms of Service
                 </Link>{" "}
                 and{" "}
-                <Link to="/privacy" target="_blank" className="text-primary font-medium hover:underline">
+                <Link to="/privacy-policy" target="_blank" className="text-primary font-medium hover:underline">
                   Privacy Policy
                 </Link>
                 , including consent to receive SMS communications. Message

@@ -166,7 +166,7 @@ const Quote = () => {
                     >
                       I agree to the{" "}
                       <Link
-                        to="/terms"
+                        to="/terms-of-service"
                         target="_blank"
                         className="text-primary font-medium hover:underline"
                       >
@@ -174,7 +174,7 @@ const Quote = () => {
                       </Link>{" "}
                       and{" "}
                       <Link
-                        to="/privacy"
+                        to="/privacy-policy"
                         target="_blank"
                         className="text-primary font-medium hover:underline"
                       >

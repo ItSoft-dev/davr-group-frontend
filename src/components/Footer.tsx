@@ -157,14 +157,14 @@ const Footer = () => {
         </p>
         <div className="flex items-center gap-6 text-xs text-muted-foreground">
           <Link
-            to="/privacy"
+            to="/privacy-policy"
             className="hover:text-primary transition-colors duration-200"
           >
             Privacy Policy
           </Link>
           <span className="w-1 h-1 rounded-full bg-border" />
           <Link
-            to="/terms"
+            to="/terms-of-service"
             className="hover:text-primary transition-colors duration-200"
           >
             Terms of Service
