@@ -69,7 +69,7 @@ const Quote = () => {
             {/* Sidebar */}
             <div className="lg:col-span-1 order-2 lg:order-1">
               <div className="lg:sticky lg:top-32 space-y-6">
-                <div className="p-7 rounded-2xl border border-border/50 bg-card/30">
+                <div className="p-5 sm:p-7 rounded-2xl border border-border/50 bg-card/30">
                   <h3 className="font-bold text-lg mb-4">Why Request a Quote?</h3>
                   <div className="space-y-4">
                     {[{ icon: Clock, text: "Response within 24 hours" }, { icon: Shield, text: "No obligation quote" }, { icon: Phone, text: "Personal follow-up call" }].map((b) => (
@@ -80,14 +80,14 @@ const Quote = () => {
                     ))}
                   </div>
                 </div>
-                <div className="p-7 rounded-2xl border border-border/50 bg-gradient-to-br from-primary/5 via-card/30 to-secondary/5">
+                <div className="p-5 sm:p-7 rounded-2xl border border-border/50 bg-gradient-to-br from-primary/5 via-card/30 to-secondary/5">
                   <h3 className="font-bold text-lg mb-2">Prefer to call?</h3>
                   <p className="text-sm text-muted-foreground mb-4">Speak directly with our dispatch team for immediate assistance.</p>
                   <a href={`tel:${formatPhoneHref(phoneValue)}`} className="flex items-center gap-2 text-primary font-semibold hover:underline">
                     <Phone className="h-4 w-4" /> {formatPhoneDisplay(phoneValue)}
                   </a>
                 </div>
-                <div className="p-7 rounded-2xl border border-border/50 bg-card/30">
+                <div className="p-5 sm:p-7 rounded-2xl border border-border/50 bg-card/30">
                   <h3 className="font-bold mb-3">What happens next?</h3>
                   <div className="space-y-4">
                     {[{ step: "1", text: "Submit your shipment details" }, { step: "2", text: "Our team reviews your request" }, { step: "3", text: "Receive a competitive quote" }, { step: "4", text: "Confirm and schedule pickup" }].map((s) => (
@@ -103,7 +103,7 @@ const Quote = () => {
 
             {/* Form */}
             <div className="lg:col-span-2 order-1 lg:order-2">
-              <form onSubmit={handleSubmit} className="space-y-6 p-8 md:p-10 rounded-2xl border border-border/50 bg-card/30">
+              <form onSubmit={handleSubmit} className="space-y-6 p-5 sm:p-6 md:p-10 rounded-2xl border border-border/50 bg-card/30">
                 <div className="mb-2">
                   <h3 className="text-2xl font-bold mb-2">Shipment Details</h3>
                   <p className="text-sm text-muted-foreground">Fill in the details below and we'll prepare your personalized quote.</p>

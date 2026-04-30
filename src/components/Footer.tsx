@@ -151,28 +151,28 @@ const Footer = () => {
 
     {/* Bottom bar */}
     <div className="border-t border-border/30">
-      <div className="container mx-auto px-4 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-muted-foreground">
-          © {new Date().getFullYear()} DAVR GROUP LLC. All rights reserved.
+      <div className="container mx-auto px-4 py-6 flex flex-col lg:flex-row items-start justify-between gap-4">
+        <p className="text-xs text-muted-foreground text-left">
+          &copy; {new Date().getFullYear()} DAVR GROUP LLC. All rights reserved.
         </p>
-        <div className="flex items-center gap-6 text-xs text-muted-foreground">
+        <div className="flex w-full flex-col items-start justify-start gap-2 text-left text-xs text-muted-foreground sm:w-auto sm:flex-row sm:flex-wrap sm:gap-x-4 sm:gap-y-2 lg:justify-end">
           <Link
             to="/privacy-policy"
-            className="hover:text-primary transition-colors duration-200"
+            className="hover:text-primary transition-colors duration-200 whitespace-nowrap"
           >
             Privacy Policy
           </Link>
-          <span className="w-1 h-1 rounded-full bg-border" />
+          <span className="hidden lg:block w-1 h-1 rounded-full bg-border" />
           <Link
             to="/terms-of-service"
-            className="hover:text-primary transition-colors duration-200"
+            className="hover:text-primary transition-colors duration-200 whitespace-nowrap"
           >
             Terms of Service
           </Link>
-          <span className="w-1 h-1 rounded-full bg-border" />
-          <span>Entity Type: Carrier</span>
-          <span className="w-1 h-1 rounded-full bg-border" />
-          <span>Saint Louis, MO 63132</span>
+          <span className="hidden lg:block w-1 h-1 rounded-full bg-border" />
+          <span className="whitespace-nowrap">Entity Type: Carrier</span>
+          <span className="hidden lg:block w-1 h-1 rounded-full bg-border" />
+          <span className="whitespace-nowrap">Saint Louis, MO 63132</span>
         </div>
       </div>
     </div>

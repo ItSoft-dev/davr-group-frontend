@@ -85,13 +85,13 @@ const Fleet = () => {
               <img
                 src={fleetImg}
                 alt="Davr Group fleet"
-                className="w-full h-auto"
+                className="h-64 w-full object-cover sm:h-auto"
                 loading="lazy"
                 width={1280}
                 height={720}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent dark:from-background/80" />
-              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8">
                 <div className="flex flex-wrap gap-3">
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-primary/20 backdrop-blur-sm text-primary text-sm font-medium border border-primary/30">
                     <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />{" "}
