@@ -134,10 +134,10 @@ export const adminApi = {
   getLegalPages: () => request<any[]>("/api/content/legal"),
   createLegalPage: (data: any) =>
     request<any>("/api/content/legal", { method: "POST", body: JSON.stringify(data) }),
-  updateLegalPage: (id: number, data: any) =>
-    request<any>(`/api/content/legal/${id}`, { method: "PUT", body: JSON.stringify(data) }),
-  deleteLegalPage: (id: number) =>
-    request<any>(`/api/content/legal/${id}`, { method: "DELETE" }),
+  updateLegalPage: (slug: string, data: any) =>
+    request<any>(`/api/content/legal/${slug}`, { method: "PUT", body: JSON.stringify(data) }),
+  deleteLegalPage: (slug: string) =>
+    request<any>(`/api/content/legal/${slug}`, { method: "DELETE" }),
   // Contacts
   getContacts: () => request<any[]>("/api/contacts/"),
   markContactRead: (id: number) =>
