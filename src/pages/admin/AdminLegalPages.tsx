@@ -31,6 +31,8 @@ const SLUG_OPTIONS = [
 ];
 
 const AdminLegalPages = () => {
+  const role = localStorage.getItem("admin_role");
+  const isSuperAdmin = role === "super_admin";
   const queryClient = useQueryClient();
   const { data: pages = [] } = useQuery<LegalPage[]>({
     queryKey: ["adminLegalPages"],
@@ -70,6 +72,7 @@ const AdminLegalPages = () => {
   });
 
   const startCreate = () => {
+    if (!isSuperAdmin) return;
     setSlug("");
     setTitle("");
     setContent("");
@@ -78,6 +81,7 @@ const AdminLegalPages = () => {
   };
 
   const startEdit = (page: LegalPage) => {
+    if (!isSuperAdmin) return;
     setSlug(page.slug);
     setTitle(page.title);
     setContent(page.content || "");
@@ -94,6 +98,7 @@ const AdminLegalPages = () => {
   };
 
   const handleSave = () => {
+    if (!isSuperAdmin) return;
     if (!slug || !title) {
       toast.error("Slug and title are required");
       return;
@@ -117,9 +122,11 @@ const AdminLegalPages = () => {
             Manage Privacy Policy and Terms of Service content
           </p>
         </div>
+        {isSuperAdmin && (
         <Button onClick={startCreate} className="gap-2">
           <Plus className="h-4 w-4" /> Add Page
         </Button>
+        )}
       </div>
 
       {/* Editor */}
@@ -171,6 +178,7 @@ const AdminLegalPages = () => {
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Privacy Policy"
                   className="mt-1.5"
+                  disabled={!isSuperAdmin}
                 />
               </div>
             </div>
@@ -184,10 +192,12 @@ const AdminLegalPages = () => {
                 placeholder="<div><h1>Privacy Policy</h1><p>Content here...</p></div>"
                 className="mt-1.5 w-full rounded-lg border border-border bg-[#1a1a2e] text-[#e0e0e0] p-3 font-mono text-sm resize-y"
                 style={{ minHeight: "400px" }}
+                disabled={!isSuperAdmin}
               />
             </div>
           </div>
 
+          {isSuperAdmin && (
           <div className="flex gap-2 p-5 border-t border-border/50 bg-muted/10">
             <Button
               onClick={handleSave}
@@ -201,6 +211,7 @@ const AdminLegalPages = () => {
               Cancel
             </Button>
           </div>
+          )}
         </div>
       )}
 
@@ -223,27 +234,29 @@ const AdminLegalPages = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex gap-1">
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8"
-                  onClick={() => startEdit(page)}
-                >
-                  <Pencil className="h-3.5 w-3.5" />
-                </Button>
-                <Button
-                  variant="ghost"
-                  size="icon"
-                  className="h-8 w-8 text-red-500 hover:text-red-600"
-                  onClick={() => {
-                    if (confirm("Delete this legal page?"))
-                      deleteMutation.mutate(page.slug);
-                  }}
-                >
-                  <Trash2 className="h-3.5 w-3.5" />
-                </Button>
-              </div>
+              {isSuperAdmin && (
+                <div className="flex gap-1">
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8"
+                    onClick={() => startEdit(page)}
+                  >
+                    <Pencil className="h-3.5 w-3.5" />
+                  </Button>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    className="h-8 w-8 text-red-500 hover:text-red-600"
+                    onClick={() => {
+                      if (confirm("Delete this legal page?"))
+                        deleteMutation.mutate(page.slug);
+                    }}
+                  >
+                    <Trash2 className="h-3.5 w-3.5" />
+                  </Button>
+                </div>
+              )}
             </div>
             {page.updated_at && (
               <p className="text-xs text-muted-foreground mt-3">
@@ -258,9 +271,11 @@ const AdminLegalPages = () => {
             <p className="text-muted-foreground mb-3">
               No legal pages yet. Create Privacy Policy and Terms of Service.
             </p>
+            {isSuperAdmin && (
             <Button onClick={startCreate} className="gap-2">
               <Plus className="h-4 w-4" /> Create First Page
             </Button>
+            )}
           </div>
         )}
       </div>

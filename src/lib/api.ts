@@ -25,7 +25,7 @@ export const authApi = {
       method: "POST",
       body: JSON.stringify({ username, password }),
     }),
-  me: () => request<{ id: number; username: string; full_name: string }>("/api/auth/me"),
+  me: () => request<{ id: number; username: string; full_name: string; role: string }>("/api/auth/me"),
 };
 
 // ---- Public ----

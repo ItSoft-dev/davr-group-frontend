@@ -33,14 +33,19 @@ const AdminLayout = () => {
   useEffect(() => {
     const token = localStorage.getItem("admin_token");
     if (!token) { navigate("/admin/login"); return; }
-    authApi.me().then(setAdmin).catch(() => {
+    authApi.me().then((me) => {
+      setAdmin(me);
+      localStorage.setItem("admin_role", me.role || "");
+    }).catch(() => {
       localStorage.removeItem("admin_token");
+      localStorage.removeItem("admin_role");
       navigate("/admin/login");
     });
   }, [navigate]);
 
   const logout = () => {
     localStorage.removeItem("admin_token");
+    localStorage.removeItem("admin_role");
     navigate("/admin/login");
   };
 
@@ -92,7 +97,7 @@ const AdminLayout = () => {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="text-sm font-medium truncate">{admin.full_name || admin.username}</div>
-                <div className="text-xs text-muted-foreground">Admin</div>
+                <div className="text-xs text-muted-foreground">{admin.role || "Admin"}</div>
               </div>
             </div>
             <div className="flex gap-2">
