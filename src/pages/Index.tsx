@@ -301,18 +301,20 @@ const Index = () => {
                     readiness, driver capacity, coverage reach, and on-time
                     delivery consistency.
                   </p>
-                  <div className="mt-8 grid grid-cols-2 gap-3 max-w-sm">
+                  <div className="mt-8 grid grid-cols-2 gap-4 w-full">
                     {[
-                      "Dispatch ready",
-                      "DOT aligned",
-                      "48-state lanes",
-                      "Tracked service",
+                      { label: "Dispatch ready", desc: "Fleet on standby", color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/25", dot: "bg-emerald-400", glow: "shadow-emerald-500/10" },
+                      { label: "DOT aligned", desc: "Fully compliant", color: "text-blue-400 bg-blue-500/10 border-blue-500/25", dot: "bg-blue-400", glow: "shadow-blue-500/10" },
+                      { label: "48-state lanes", desc: "Nationwide reach", color: "text-violet-400 bg-violet-500/10 border-violet-500/25", dot: "bg-violet-400", glow: "shadow-violet-500/10" },
+                      { label: "Tracked service", desc: "Real-time updates", color: "text-amber-400 bg-amber-500/10 border-amber-500/25", dot: "bg-amber-400", glow: "shadow-amber-500/10" },
                     ].map((item) => (
                       <div
-                        key={item}
-                        className="rounded-2xl border border-slate-200 bg-white/80 px-3 py-3 text-xs font-medium uppercase tracking-[0.14em] text-slate-500 shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:text-white/60 dark:shadow-none"
+                        key={item.label}
+                        className={`flex flex-col gap-2 rounded-2xl border px-5 py-4 shadow-lg ${item.color} ${item.glow}`}
                       >
-                        {item}
+                        <span className={`w-2.5 h-2.5 rounded-full ${item.dot} shadow-sm`} />
+                        <span className="font-bold text-sm leading-tight">{item.label}</span>
+                        <span className="text-xs opacity-60 font-medium">{item.desc}</span>
                       </div>
                     ))}
                   </div>

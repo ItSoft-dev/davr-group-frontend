@@ -95,7 +95,7 @@ const About = () => {
   return (
     <div>
       {/* Hero */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative pt-12 pb-20 md:pt-16 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -149,7 +149,7 @@ const About = () => {
       </section>
 
       {/* Values */}
-      <section className="py-24 md:py-32 relative">
+      <section className="py-10 md:py-14 relative">
         <div className="absolute inset-0 section-gradient" />
         <div className="absolute inset-0 dot-pattern opacity-[0.03]" />
         <div className="container mx-auto px-4 relative">
@@ -252,7 +252,12 @@ const About = () => {
                     </div>
                     <div className="mt-6 h-px w-full bg-gradient-to-r from-white/10 via-white/5 to-transparent" />
                     <div className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground/80">
-                      Trusted in every shipment
+                      {[
+                        "Safety in every mile",
+                        "Delivered on time, every time",
+                        "Open & honest always",
+                        "Built on long-term trust",
+                      ][i % 4]}
                     </div>
                   </div>
                 </div>
@@ -263,9 +268,9 @@ const About = () => {
       </section>
 
       {/* Timeline */}
-      <section className="py-24 md:py-32">
+      <section className="py-2 md:py-4">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-10">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
               Our Journey
             </div>
@@ -323,18 +328,20 @@ const About = () => {
                     readiness, driver capacity, coverage reach, and on-time
                     delivery consistency.
                   </p>
-                  <div className="mt-8 grid max-w-sm grid-cols-2 gap-3">
+                  <div className="mt-8 grid grid-cols-2 gap-4 w-full">
                     {[
-                      "Dispatch ready",
-                      "DOT aligned",
-                      "48-state lanes",
-                      "Tracked service",
+                      { label: "Dispatch ready", desc: "Fleet on standby", color: "text-emerald-400 bg-emerald-500/10 border-emerald-500/25", dot: "bg-emerald-400", glow: "shadow-emerald-500/10" },
+                      { label: "DOT aligned", desc: "Fully compliant", color: "text-blue-400 bg-blue-500/10 border-blue-500/25", dot: "bg-blue-400", glow: "shadow-blue-500/10" },
+                      { label: "48-state lanes", desc: "Nationwide reach", color: "text-violet-400 bg-violet-500/10 border-violet-500/25", dot: "bg-violet-400", glow: "shadow-violet-500/10" },
+                      { label: "Tracked service", desc: "Real-time updates", color: "text-amber-400 bg-amber-500/10 border-amber-500/25", dot: "bg-amber-400", glow: "shadow-amber-500/10" },
                     ].map((item) => (
                       <div
-                        key={item}
-                        className="rounded-2xl border border-slate-200 bg-white/80 px-3 py-3 text-xs font-medium uppercase tracking-[0.14em] text-slate-500 shadow-sm dark:border-white/10 dark:bg-white/[0.03] dark:text-white/60 dark:shadow-none"
+                        key={item.label}
+                        className={`flex flex-col gap-2 rounded-2xl border px-5 py-4 shadow-lg ${item.color} ${item.glow}`}
                       >
-                        {item}
+                        <span className={`w-2.5 h-2.5 rounded-full ${item.dot} shadow-sm`} />
+                        <span className="font-bold text-sm leading-tight">{item.label}</span>
+                        <span className="text-xs opacity-60 font-medium">{item.desc}</span>
                       </div>
                     ))}
                   </div>

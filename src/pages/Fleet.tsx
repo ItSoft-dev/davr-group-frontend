@@ -111,7 +111,7 @@ const Fleet = () => {
       </section>
 
       {/* Truck Cards */}
-      <section className="py-24 md:py-32">
+      <section className="pt-10 pb-6 md:pt-14 md:pb-8">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -185,7 +185,7 @@ const Fleet = () => {
       </section>
 
       {/* Features Grid */}
-      <section className="py-24 md:py-32 relative">
+      <section className="py-10 md:py-14 relative">
         <div className="absolute inset-0 section-gradient" />
         <div className="absolute inset-0 dot-pattern opacity-[0.03]" />
         <div className="container mx-auto px-4 relative">
@@ -240,7 +240,12 @@ const Fleet = () => {
                     </div>
                     <div className="mt-6 h-px w-full bg-gradient-to-r from-white/10 via-white/5 to-transparent" />
                     <div className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-muted-foreground/80">
-                      Maintained for every mile
+                      {[
+                        "Maintained for every mile",
+                        "Tracked in real time",
+                        "Coast to coast coverage",
+                        "DOT certified & compliant",
+                      ][i % 4]}
                     </div>
                   </div>
                 </div>

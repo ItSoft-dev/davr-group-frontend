@@ -25,9 +25,9 @@ const Footer = () => {
             Get a competitive quote in minutes. No obligation.
           </p>
         </div>
-        <Link to="/quote">
+        <Link to="/drive-with-us">
           <Button className="gap-2 h-11 px-6 shadow-lg shadow-primary/20">
-            Get a Free Quote <ArrowRight className="h-4 w-4" />
+            Drive With Us <ArrowRight className="h-4 w-4" />
           </Button>
         </Link>
       </div>

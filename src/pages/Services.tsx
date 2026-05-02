@@ -17,7 +17,7 @@ const Services = () => {
   return (
     <div>
       {/* Hero */}
-      <section className="relative py-24 md:py-32 overflow-hidden">
+      <section className="relative pt-12 pb-8 md:pt-16 md:pb-10 overflow-hidden">
         <div className="absolute inset-0 hero-gradient" />
         <div className="container mx-auto px-4 relative">
           <div className="text-center max-w-3xl mx-auto">
@@ -57,7 +57,7 @@ const Services = () => {
       </section>
 
       {/* Services List */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
+      <section className="py-10 md:py-14 relative overflow-hidden">
         <div className="absolute inset-0 section-gradient" />
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-16 lg:gap-x-8 lg:gap-y-20 max-w-6xl mx-auto relative">
