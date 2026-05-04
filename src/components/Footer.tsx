@@ -19,10 +19,10 @@ const Footer = () => {
       <div className="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <h3 className="text-xl md:text-2xl font-bold mb-1">
-            Ready to move your freight?
+            Want to join our team?
           </h3>
           <p className="text-muted-foreground text-sm">
-            Get a competitive quote in minutes. No obligation.
+            Complete the form and get started.
           </p>
         </div>
         <Link to="/drive-with-us">

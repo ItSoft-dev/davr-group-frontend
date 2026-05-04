@@ -366,7 +366,7 @@ const Index = () => {
       </section>
 
       {/* Services */}
-      <section className="py-24 md:py-32">
+      <section className="pt-14 pb-6 md:pt-20 md:pb-8">
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 text-primary text-xs font-semibold uppercase tracking-wider mb-4">
@@ -435,7 +435,7 @@ const Index = () => {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-24 md:py-32 relative overflow-hidden">
+      <section className="pt-4 pb-6 md:pt-6 md:pb-8 relative overflow-hidden">
         <div className="absolute inset-0 section-gradient" />
         <div className="absolute inset-0 dot-pattern opacity-[0.03]" />
         <div className="container mx-auto px-4 relative">
@@ -481,7 +481,7 @@ const Index = () => {
       </section>
 
       {/* Fleet Preview */}
-      <section className="py-24 md:py-32">
+      <section className="pt-10 pb-4 md:pt-14 md:pb-6">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -550,7 +550,7 @@ const Index = () => {
       </section>
 
       {/* Testimonials */}
-      <section className="py-24 md:py-32 relative overflow-visible">
+      <section className="pt-4 pb-10 md:pt-6 md:pb-14 relative overflow-visible">
         <div className="absolute inset-0 section-gradient" />
         <div className="w-[90%] mx-auto relative">
           <div className="w-full max-w-none mx-auto">
